@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:web": "vite build --config vite.web.config.ts",
+    "build:web": "vite build --config vite.web.config.ts && node scripts/postbuild-kurocat-seo.mjs",
     "build:android-web": "vite build --config vite.android.config.ts",
     "preview": "vite preview",
     "tauri": "tauri",
