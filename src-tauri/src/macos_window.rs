@@ -288,7 +288,15 @@ pub fn handle_display_menu(app: &AppHandle, item_id: &str) {
     let _ = app.emit("kuro-settings", updated);
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct ScreenRects {
+    /// Full `NSScreen::frame()` in AppKit logical points (Y-up): `(x, y, w, h)`.
+    pub frame: (f64, f64, f64, f64),
+    /// Usable `NSScreen::visibleFrame()` (excluding menu bar & Dock) in AppKit logical points (Y-up).
+    pub visible_frame: (f64, f64, f64, f64),
+}
+
+#[derive(Debug, Clone)]
 pub struct DragSnapshot {
     pub origin_x: f64,
     pub origin_y: f64,
@@ -298,6 +306,11 @@ pub struct DragSnapshot {
     pub max_x: f64,
     pub min_y: f64,
     pub max_y: f64,
+    /// Height of the primary `NSScreen` (origin `(0, 0)`) in AppKit logical points,
+    /// used to convert Quartz Y-down cursor coordinates into AppKit Y-up points.
+    pub primary_height: f64,
+    /// Per-screen `(frame, visibleFrame)` rectangles in AppKit logical points (Y-up).
+    pub screens: Vec<ScreenRects>,
 }
 
 #[allow(dead_code)]
@@ -323,18 +336,29 @@ fn query_drag_snapshot_on_main(app: &AppHandle) -> Option<DragSnapshot> {
     let window = app.get_webview_window("main")?;
     with_native_window(&window, |mtm, native| {
         let frame = native.frame();
-        let screen_frames: Vec<(f64, f64, f64, f64)> = NSScreen::screens(mtm)
+        let screens: Vec<ScreenRects> = NSScreen::screens(mtm)
             .iter()
             .map(|screen| {
                 let rect = screen.frame();
-                (
-                    rect.origin.x,
-                    rect.origin.y,
-                    rect.size.width,
-                    rect.size.height,
-                )
+                let vis = screen.visibleFrame();
+                ScreenRects {
+                    frame: (
+                        rect.origin.x,
+                        rect.origin.y,
+                        rect.size.width,
+                        rect.size.height,
+                    ),
+                    visible_frame: (vis.origin.x, vis.origin.y, vis.size.width, vis.size.height),
+                }
             })
             .collect();
+        let screen_frames: Vec<(f64, f64, f64, f64)> = screens.iter().map(|s| s.frame).collect();
+        let primary_height = screens
+            .iter()
+            .find(|s| s.frame.0.abs() < 0.5 && s.frame.1.abs() < 0.5)
+            .or_else(|| screens.first())
+            .map(|s| s.frame.3)
+            .unwrap_or(900.0);
         let (u_min_x, u_min_y, u_max_x, u_max_y) = crate::macos_screens_union(&screen_frames)?;
         let (min_x, max_x, min_y, max_y) = crate::macos_drag_bounds(
             frame.size.width,
@@ -353,6 +377,8 @@ fn query_drag_snapshot_on_main(app: &AppHandle) -> Option<DragSnapshot> {
             max_x,
             min_y,
             max_y,
+            primary_height,
+            screens,
         })
     })
     .flatten()
@@ -379,6 +405,14 @@ pub fn drag_snapshot(app: &AppHandle) -> Option<DragSnapshot> {
 
 pub fn set_window_origin(app: &AppHandle, x: f64, y: f64) {
     if !x.is_finite() || !y.is_finite() {
+        return;
+    }
+    if MainThreadMarker::new().is_some() {
+        if let Some(window) = app.get_webview_window("main") {
+            let _ = with_native_window(&window, |_, native| {
+                native.setFrameOrigin(NSPoint::new(x, y));
+            });
+        }
         return;
     }
     let handle = app.clone();
@@ -411,7 +445,8 @@ mod tests {
         assert_eq!(y_top, 1051.0);
 
         let (x_left, y_bottom) = clamp_drag_origin(-5000.0, -900.0, 420.0, 440.0, union);
-        assert_eq!(x_left, -2346.0);
+        // -2304 - round(420 * 0.28) = -2422 (allows >=24% deliberate Edge-Peek push)
+        assert_eq!(x_left, -2422.0);
         // 0 + round(440 * 0.68) - 440 = -141
         assert_eq!(y_bottom, -141.0);
     }

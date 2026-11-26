@@ -2315,9 +2315,12 @@ pub mod linux_hook {
         static QUERY_CONN: RefCell<Option<Option<X11QueryConn>>> = const { RefCell::new(None) };
     }
 
-    pub fn cursor_pos() -> Option<(i32, i32)> {
+    /// Queries X11 root pointer coordinates and live left-mouse-button state (`Button1Mask`).
+    /// Returns `None` on pure Wayland sessions where X11 display connection is unavailable.
+    pub fn query_pointer_state() -> Option<(i32, i32, bool)> {
+        const BUTTON1_MASK: c_uint = 1 << 8;
         if let Some(api) = x11_api() {
-            let queried = QUERY_CONN.with(|cell| {
+            return QUERY_CONN.with(|cell| {
                 let mut borrow = cell.borrow_mut();
                 if borrow.is_none() {
                     let conn = unsafe {
@@ -2362,14 +2365,18 @@ pub mod linux_hook {
                         LAST_CURSOR_X.store(root_x, Ordering::Relaxed);
                         LAST_CURSOR_Y.store(root_y, Ordering::Relaxed);
                         HAS_CURSOR.store(true, Ordering::Relaxed);
-                        return Some((root_x, root_y));
+                        return Some((root_x, root_y, (mask & BUTTON1_MASK) != 0));
                     }
                 }
                 None
             });
-            if queried.is_some() {
-                return queried;
-            }
+        }
+        None
+    }
+
+    pub fn cursor_pos() -> Option<(i32, i32)> {
+        if let Some((x, y, _)) = query_pointer_state() {
+            return Some((x, y));
         }
         if HAS_CURSOR.load(Ordering::Relaxed) {
             Some((

@@ -18,6 +18,7 @@ struct TrayCheckHandles {
     key_bubbles: CheckMenuItem<Wry>,
     privacy_guard: CheckMenuItem<Wry>,
     sound_toggle: CheckMenuItem<Wry>,
+    typing_sound_toggle: CheckMenuItem<Wry>,
     always_on_top: CheckMenuItem<Wry>,
     autostart: CheckMenuItem<Wry>,
     obs_toggle: CheckMenuItem<Wry>,
@@ -61,6 +62,7 @@ pub fn sync_checkmarks(s: &AppSettings) {
             let _ = h.key_bubbles.set_checked(s.show_key_bubbles);
             let _ = h.privacy_guard.set_checked(s.privacy_password_guard);
             let _ = h.sound_toggle.set_checked(s.sound_enabled);
+            let _ = h.typing_sound_toggle.set_checked(s.typing_sound_enabled);
             let _ = h.always_on_top.set_checked(s.always_on_top);
             let _ = h.autostart.set_checked(s.autostart);
             let _ = h.obs_toggle.set_checked(s.obs_enabled);
@@ -146,6 +148,14 @@ fn build_tray_menu(
         t(lang, "tray.sound_toggle"),
         true,
         initial.sound_enabled,
+        None::<&str>,
+    )?;
+    let typing_sound_toggle = CheckMenuItem::with_id(
+        app,
+        "typing_sound_toggle",
+        t(lang, "tray.typing_sound_toggle"),
+        true,
+        initial.typing_sound_enabled,
         None::<&str>,
     )?;
     let always_on_top = CheckMenuItem::with_id(
@@ -366,6 +376,61 @@ fn build_tray_menu(
     )?;
     let quit = MenuItem::with_id(app, "quit", t(lang, "tray.quit"), true, None::<&str>)?;
 
+    let interact_menu = Submenu::with_items(
+        app,
+        t(lang, "tray.interact_menu"),
+        true,
+        &[&privacy_guard, &key_bubbles, &sound_toggle, &typing_sound_toggle, &always_on_top],
+    )?;
+
+    let sys_sep = PredefinedMenuItem::separator(app)?;
+    #[cfg(windows)]
+    let system_menu = Submenu::with_items(
+        app,
+        t(lang, "tray.system_menu"),
+        true,
+        &[
+            &fps_menu,
+            &lang_menu,
+            &display_menu,
+            &sys_sep,
+            &autostart,
+            &mcp_toggle,
+            &desktop_shortcut,
+            &reset_pos,
+        ],
+    )?;
+    #[cfg(target_os = "macos")]
+    let system_menu = Submenu::with_items(
+        app,
+        t(lang, "tray.system_menu"),
+        true,
+        &[
+            &fps_menu,
+            &lang_menu,
+            &display_menu,
+            &mac_input_menu,
+            &sys_sep,
+            &autostart,
+            &mcp_toggle,
+            &reset_pos,
+        ],
+    )?;
+    #[cfg(all(not(windows), not(target_os = "macos")))]
+    let system_menu = Submenu::with_items(
+        app,
+        t(lang, "tray.system_menu"),
+        true,
+        &[
+            &fps_menu,
+            &lang_menu,
+            &sys_sep,
+            &autostart,
+            &mcp_toggle,
+            &reset_pos,
+        ],
+    )?;
+
     let sep1 = PredefinedMenuItem::separator(app)?;
     let sep2 = PredefinedMenuItem::separator(app)?;
 
@@ -378,24 +443,15 @@ fn build_tray_menu(
             &restart_as_admin,
             &sep1,
             &click_through,
-            &privacy_guard,
-            &key_bubbles,
-            &sound_toggle,
-            &always_on_top,
             &breed_menu,
+            &scale_menu,
             &kb_menu,
             &tail_menu,
-            &scale_menu,
-            &fps_menu,
-            &lang_menu,
-            &desktop_shortcut,
-            &display_menu,
-            &reset_pos,
-            &autostart,
+            &interact_menu,
             &obs_menu,
-            &mcp_toggle,
-            &check_update,
+            &system_menu,
             &sep2,
+            &check_update,
             &quit,
         ],
     )?;
@@ -408,24 +464,15 @@ fn build_tray_menu(
             &pause_guard,
             &sep1,
             &click_through,
-            &privacy_guard,
-            &key_bubbles,
-            &sound_toggle,
-            &always_on_top,
             &breed_menu,
+            &scale_menu,
             &kb_menu,
             &tail_menu,
-            &scale_menu,
-            &fps_menu,
-            &lang_menu,
-            &mac_input_menu,
-            &display_menu,
-            &reset_pos,
-            &autostart,
+            &interact_menu,
             &obs_menu,
-            &mcp_toggle,
-            &check_update,
+            &system_menu,
             &sep2,
+            &check_update,
             &quit,
         ],
     )?;
@@ -438,22 +485,15 @@ fn build_tray_menu(
             &pause_guard,
             &sep1,
             &click_through,
-            &privacy_guard,
-            &key_bubbles,
-            &sound_toggle,
-            &always_on_top,
             &breed_menu,
+            &scale_menu,
             &kb_menu,
             &tail_menu,
-            &scale_menu,
-            &fps_menu,
-            &lang_menu,
-            &reset_pos,
-            &autostart,
+            &interact_menu,
             &obs_menu,
-            &mcp_toggle,
-            &check_update,
+            &system_menu,
             &sep2,
+            &check_update,
             &quit,
         ],
     )?;
@@ -464,6 +504,7 @@ fn build_tray_menu(
         key_bubbles,
         privacy_guard,
         sound_toggle,
+        typing_sound_toggle,
         always_on_top,
         autostart,
         obs_toggle,
@@ -677,6 +718,16 @@ pub fn setup_tray(app: &AppHandle, initial: &AppSettings) -> tauri::Result<()> {
                     let updated = {
                         let mut s = state.settings.lock().unwrap();
                         s.sound_enabled = !s.sound_enabled;
+                        crate::config::save_settings(&s);
+                        s.clone()
+                    };
+                    sync_checkmarks(&updated);
+                    let _ = app.emit("kuro-settings", updated);
+                }
+                "typing_sound_toggle" => {
+                    let updated = {
+                        let mut s = state.settings.lock().unwrap();
+                        s.typing_sound_enabled = !s.typing_sound_enabled;
                         crate::config::save_settings(&s);
                         s.clone()
                     };
