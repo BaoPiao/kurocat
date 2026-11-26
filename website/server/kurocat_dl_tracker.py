@@ -196,6 +196,8 @@ def init_storage() -> None:
 
 def classify_platform(filename: str) -> str:
     low = filename.lower()
+    if "android" in low or low.endswith(".apk"):
+        return "Android 移动端"
     if "macos" in low or low.endswith(".dmg") or low.endswith(".app.tar.gz"):
         return "macOS 通用版"
     if "win7" in low:

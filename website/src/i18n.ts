@@ -230,6 +230,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'growth.loading': '正在同步实时增长数据…',
       'growth.starCta': '⭐ 去 GitHub 点颗星支持开源 ›',      'footer.home': '谦一主页',
       'footer.pelican': '鹈鹕测试专区',      'footer.releases': '所有版本 (Releases)',
+      'footer.download': '全平台下载与校验',
+      'footer.vsBongo': '对比 Bongo Cat',
+      'footer.obs': 'OBS 免抠像教程',
+      'footer.mcp': 'AI 捏猫 & MCP',
     },
     html: {
       'hero.title': 'KuroCat · 敲键盘的小黑猫<br /><span>住进你的桌面</span>',
@@ -507,6 +511,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'growth.loading': 'Syncing live growth telemetry…',
       'growth.starCta': '⭐ Star KuroCat on GitHub ›',      'footer.home': 'Qianyi Home',
       'footer.pelican': 'Pelican Benchmark',      'footer.releases': 'All Releases',
+      'footer.download': 'All-Platform Downloads',
+      'footer.vsBongo': 'KuroCat vs Bongo Cat',
+      'footer.obs': 'OBS Transparent Guide',
+      'footer.mcp': 'AI MCP Studio',
     },
     html: {
       'hero.title': 'KuroCat — A Typing Black Cat<br /><span>Living on Your Desktop</span>',
@@ -784,6 +792,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'growth.loading': 'リアルタイム統計を読み込み中…',
       'growth.starCta': '⭐ GitHub でスターを付ける ›',      'footer.home': '謙一ホーム',
       'footer.pelican': 'ペリカンテスト',      'footer.releases': '全リリース (Releases)',
+      'footer.download': '全プラットフォーム DL',
+      'footer.vsBongo': 'Bongo Cat 比較',
+      'footer.obs': 'OBS 透過配信ガイド',
+      'footer.mcp': 'AI MCP カスタム',
     },
     html: {
       'hero.title': 'KuroCat · キーボードを叩く黒猫が<br /><span>あなたのデスクトップに</span>',
@@ -1061,6 +1073,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'growth.loading': '실시간 성장 데이터를 동기화하는 중…',
       'growth.starCta': '⭐ GitHub에서 Star로 응원하기 ›',      'footer.home': 'Qianyi 홈',
       'footer.pelican': '펠리컨 벤치마크',      'footer.releases': '모든 릴리스 (Releases)',
+      'footer.download': '전체 플랫폼 다운로드',
+      'footer.vsBongo': 'Bongo Cat 비교',
+      'footer.obs': 'OBS 투명 방송 가이드',
+      'footer.mcp': 'AI MCP 커스텀',
     },
     html: {
       'hero.title': 'KuroCat · 키보드를 치는 검은 고양이<br /><span>내 바탕화면에 살아요</span>',
@@ -1273,6 +1289,14 @@ export function applyStaticI18n(locale: Locale): KuroCatI18nBundle {
 
   const canonEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
   if (canonEl) canonEl.href = `https://kurocat.org${localeToPath(locale)}`;
+
+  const localePrefix = locale === 'zh' ? '' : `/${locale}`;
+  document.querySelectorAll<HTMLAnchorElement>('[data-locale-path]').forEach((el) => {
+    const basePath = el.dataset.localePath;
+    if (basePath) {
+      el.setAttribute('href', `${localePrefix}${basePath}`);
+    }
+  });
 
   document.querySelectorAll<HTMLElement>('[data-lang]').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === locale);

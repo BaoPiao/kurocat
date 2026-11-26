@@ -1068,7 +1068,7 @@ fn install_macos_update(app: &AppHandle, info: &UpdateInfo) -> Result<(), String
              /usr/bin/tccutil reset ListenEvent com.kurocat.pet >/dev/null 2>&1 || true; \
              sleep 0.2; \
            fi; \
-           /usr/bin/open -n '{dst}'; \
+           /usr/bin/open -n '{dst}' --args --wait-pid {pid}; \
          else \
            if [ -d '{dst}.bak' ]; then mv '{dst}.bak' '{dst}'; fi; \
            /usr/bin/open '{url}'; \

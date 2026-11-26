@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SUBPAGE_SLUGS, generateAllSubpages } from './generate-kurocat-subpages.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -41,6 +42,12 @@ const LOCALE_PAGES = [
     faqOfficialQ: 'What is the only official website and download source for KuroCat?',
     faqOfficialA:
       'KuroCat is developed and maintained exclusively by Qianyi (@qianyiai). The only official website is https://kurocat.org/, the official GitHub repository is https://github.com/qianyiai/kurocat, and the official macOS Homebrew Tap is https://github.com/qianyiai/homebrew-tap. Third-party domains such as kurocat.net or unofficial forks are not affiliated with the author.',
+    footerLinks: {
+      download: 'All-Platform Downloads',
+      vsBongo: 'KuroCat vs Bongo Cat',
+      obs: 'OBS Transparent Guide',
+      mcp: 'AI MCP Studio',
+    },
   },
   {
     code: 'ja',
@@ -66,6 +73,12 @@ const LOCALE_PAGES = [
     faqOfficialQ: 'KuroCat の唯一の公式サイトと正規ダウンロード元はどこですか？',
     faqOfficialA:
       'KuroCat の唯一の公式サイトは https://kurocat.org/ 、公式 GitHub リポジトリは https://github.com/qianyiai/kurocat 、公式 macOS Homebrew Tap は https://github.com/qianyiai/homebrew-tap です。kurocat.net などの第三者ドメインや非公式フォークは作者と無関係です。',
+    footerLinks: {
+      download: '全プラットフォーム DL',
+      vsBongo: 'Bongo Cat 比較',
+      obs: 'OBS 透過配信ガイド',
+      mcp: 'AI MCP カスタム',
+    },
   },
   {
     code: 'ko',
@@ -91,6 +104,12 @@ const LOCALE_PAGES = [
     faqOfficialQ: 'KuroCat의 유일한 공식 사이트와 정식 다운로드 경로는 어디인가요?',
     faqOfficialA:
       'KuroCat의 유일한 공식 웹사이트는 https://kurocat.org/ 이며, 공식 GitHub 저장소는 https://github.com/qianyiai/kurocat , 공식 macOS Homebrew Tap은 https://github.com/qianyiai/homebrew-tap 입니다. kurocat.net 등 제3자 도메인이나 비공식 포크는 제작자와 무관합니다.',
+    footerLinks: {
+      download: '전체 플랫폼 다운로드',
+      vsBongo: 'Bongo Cat 비교',
+      obs: 'OBS 투명 방송 가이드',
+      mcp: 'AI MCP 커스텀',
+    },
   },
 ];
 
@@ -189,10 +208,35 @@ for (const loc of LOCALE_PAGES) {
     `"name": "${escapeJsonStr(loc.faqOfficialQ)}",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "${escapeJsonStr(loc.faqOfficialA)}"\n            }`
   );
 
+  // Localize footer hub links (href + crawler-visible anchor text) to that locale's subpages
+  html = html.replace(/href="\/download\/"/g, `href="/${loc.code}/download/"`);
+  html = html.replace(/href="\/vs\/bongo-cat\/"/g, `href="/${loc.code}/vs/bongo-cat/"`);
+  html = html.replace(/href="\/obs\/"/g, `href="/${loc.code}/obs/"`);
+  html = html.replace(/href="\/mcp\/"/g, `href="/${loc.code}/mcp/"`);
+  html = html.replace(
+    /data-i18n="footer\.download">[^<]*<\/a>/g,
+    `data-i18n="footer.download">${escapeAttr(loc.footerLinks.download)}</a>`
+  );
+  html = html.replace(
+    /data-i18n="footer\.vsBongo">[^<]*<\/a>/g,
+    `data-i18n="footer.vsBongo">${escapeAttr(loc.footerLinks.vsBongo)}</a>`
+  );
+  html = html.replace(
+    /data-i18n="footer\.obs">[^<]*<\/a>/g,
+    `data-i18n="footer.obs">${escapeAttr(loc.footerLinks.obs)}</a>`
+  );
+  html = html.replace(
+    /data-i18n="footer\.mcp">[^<]*<\/a>/g,
+    `data-i18n="footer.mcp">${escapeAttr(loc.footerLinks.mcp)}</a>`
+  );
+
   const outDir = path.join(distDir, loc.code);
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf8');
 }
+
+// Generate 16 localized SEO landing pages (4 topics x 4 locales)
+const subpageCount = generateAllSubpages(distDir, today);
 
 // robots.txt
 const robotsTxt = `User-agent: *
@@ -240,44 +284,50 @@ Sitemap: https://kurocat.org/sitemap.xml
 `;
 fs.writeFileSync(path.join(distDir, 'robots.txt'), robotsTxt, 'utf8');
 
-// sitemap.xml
-const hreflangBlock = `    <xhtml:link rel="alternate" hreflang="x-default" href="https://kurocat.org/" />
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://kurocat.org/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://kurocat.org/en/" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://kurocat.org/ja/" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://kurocat.org/ko/" />`;
+// sitemap.xml (home + 4 topic hubs x 4 locales + llms.txt)
+function makeHreflangBlock(slugPath) {
+  const zhUrl = slugPath ? `https://kurocat.org/${slugPath}/` : 'https://kurocat.org/';
+  const enUrl = slugPath ? `https://kurocat.org/en/${slugPath}/` : 'https://kurocat.org/en/';
+  const jaUrl = slugPath ? `https://kurocat.org/ja/${slugPath}/` : 'https://kurocat.org/ja/';
+  const koUrl = slugPath ? `https://kurocat.org/ko/${slugPath}/` : 'https://kurocat.org/ko/';
+  return `    <xhtml:link rel="alternate" hreflang="x-default" href="${zhUrl}" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="${zhUrl}" />
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}" />
+    <xhtml:link rel="alternate" hreflang="ja" href="${jaUrl}" />
+    <xhtml:link rel="alternate" hreflang="ko" href="${koUrl}" />`;
+}
+
+function makeSitemapGroup(slugPath, zhPrio, otherPrio) {
+  const hBlock = makeHreflangBlock(slugPath);
+  const locales = [
+    { prefix: '', prio: zhPrio },
+    { prefix: 'en/', prio: otherPrio },
+    { prefix: 'ja/', prio: otherPrio },
+    { prefix: 'ko/', prio: otherPrio },
+  ];
+  return locales
+    .map(({ prefix, prio }) => {
+      const locUrl = slugPath ? `https://kurocat.org/${prefix}${slugPath}/` : `https://kurocat.org/${prefix}`;
+      return `  <url>
+    <loc>${locUrl}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${prio}</priority>
+${hBlock}
+  </url>`;
+    })
+    .join('\n');
+}
+
+const sitemapEntries = [
+  makeSitemapGroup('', '1.0', '0.9'),
+  ...SUBPAGE_SLUGS.map((slug) => makeSitemapGroup(slug, slug === 'download' ? '0.9' : '0.8', '0.8')),
+].join('\n');
 
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://kurocat.org/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-${hreflangBlock}
-  </url>
-  <url>
-    <loc>https://kurocat.org/en/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-${hreflangBlock}
-  </url>
-  <url>
-    <loc>https://kurocat.org/ja/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-${hreflangBlock}
-  </url>
-  <url>
-    <loc>https://kurocat.org/ko/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-${hreflangBlock}
-  </url>
+${sitemapEntries}
   <url>
     <loc>https://kurocat.org/llms.txt</loc>
     <lastmod>${today}</lastmod>
@@ -307,6 +357,10 @@ All official downloads, documentation, and source code are published exclusively
 - [KuroCat Official Website (English)](https://kurocat.org/en/): English interface, downloads, and localized demos.
 - [KuroCat Official Website (Japanese / 日本語)](https://kurocat.org/ja/): Japanese interface and demos.
 - [KuroCat Official Website (Korean / 한국어)](https://kurocat.org/ko/): Korean interface and demos.
+- [Official All-Platform Downloads & SHA-256 Checksums](https://kurocat.org/download/): Windows 10/11, Win7 Portable, macOS Universal DMG + Homebrew, Linux \`.deb\`/\`.AppImage\`, and Android APK with verified SHA-256 hashes (also at \`/en/download/\`, \`/ja/download/\`, \`/ko/download/\`).
+- [KuroCat vs Bongo Cat Comparison](https://kurocat.org/vs/bongo-cat/): Feature, memory/GPU footprint, 3D/2D engine, macOS/Linux support, OBS transparency, and privacy comparison (also at \`/en/vs/bongo-cat/\`, \`/ja/vs/bongo-cat/\`, \`/ko/vs/bongo-cat/\`).
+- [OBS Transparent Browser Source Guide](https://kurocat.org/obs/): Zero chroma-key local \`http://127.0.0.1:27421/obs\` setup, OBS-Only mode, synced password privacy guard, and \`KuroCat Live\` chroma fallback (also at \`/en/obs/\`, \`/ja/obs/\`, \`/ko/obs/\`).
+- [MCP AI Cat Studio & Coding Companion Guide](https://kurocat.org/mcp/): Built-in Stdio & Streamable HTTP (\`127.0.0.1:27420/mcp\`) setup for Claude Desktop, Cursor, Antigravity, and Windsurf, plus AI cat sculpting prompts (also at \`/en/mcp/\`, \`/ja/mcp/\`, \`/ko/mcp/\`).
 - [Official GitHub Repository](https://github.com/qianyiai/kurocat): MIT open-source codebase, issue tracker, and GitHub Releases.
 - [Official macOS Homebrew Tap](https://github.com/qianyiai/homebrew-tap): Install on macOS via \`brew install --cask qianyiai/tap/kurocat\`.
 - [Author Homepage (Qianyi)](https://qianyi.one/): Author profile and projects.
@@ -357,6 +411,14 @@ KuroCat is a lightweight, transparent, always-on-top desktop typing cat and AI c
 - **Native OBS Transparent Overlay**: Local \`http://127.0.0.1:27421/obs\` Browser Source with true Alpha transparency (no chroma key), optional OBS-Only mode, and synchronized privacy masking.
 - **Desktop Ergonomics**: 20%–150% smooth scaling, persistent click-through lock (\`Alt\` temporary drag), single-instance guard, anti-cheat pause/hide mode, and SHA-256 verified in-app auto-updater.
 
+## Dedicated Multilingual Topic Hubs
+
+Every topic hub is pre-rendered in Chinese (\`zh-CN\`), English (\`/en/\`), Japanese (\`/ja/\`), and Korean (\`/ko/\`) with bidirectional \`hreflang\` and structured data:
+- **Official Downloads & SHA-256 Verification**: https://kurocat.org/download/ · https://kurocat.org/en/download/ · https://kurocat.org/ja/download/ · https://kurocat.org/ko/download/
+- **KuroCat vs Bongo Cat Comparison**: https://kurocat.org/vs/bongo-cat/ · https://kurocat.org/en/vs/bongo-cat/ · https://kurocat.org/ja/vs/bongo-cat/ · https://kurocat.org/ko/vs/bongo-cat/
+- **OBS Zero Chroma-Key Overlay Guide**: https://kurocat.org/obs/ · https://kurocat.org/en/obs/ · https://kurocat.org/ja/obs/ · https://kurocat.org/ko/obs/
+- **MCP AI Cat Studio & Coding Companion**: https://kurocat.org/mcp/ · https://kurocat.org/en/mcp/ · https://kurocat.org/ja/mcp/ · https://kurocat.org/ko/mcp/
+
 ## Direct Official Downloads (v5.1.2)
 
 - Windows 10/11 (x64 Installer): https://kurocat.org/releases/v5.1.2/KuroCat-5.1.2-x64-setup.exe
@@ -388,4 +450,4 @@ fs.writeFileSync(path.join(distDir, 'llms-full.txt'), llmsFullTxt, 'utf8');
 // IndexNow key file
 fs.writeFileSync(path.join(distDir, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY, 'utf8');
 
-console.log('[postbuild-kurocat-seo] Generated /en/, /ja/, /ko/, robots.txt, sitemap.xml, llms.txt, llms-full.txt & IndexNow key.');
+console.log(`[postbuild-kurocat-seo] Generated /en/, /ja/, /ko/, ${subpageCount} localized SEO subpages, robots.txt, sitemap.xml, llms.txt, llms-full.txt & IndexNow key.`);
