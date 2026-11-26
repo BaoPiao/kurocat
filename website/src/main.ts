@@ -101,9 +101,9 @@ interface ReleaseAssetMap {
 
 function buildDefaultAssets(): ReleaseAssetMap {
   const localBase = `/releases/${LOCAL_MIRROR_VERSION}`;
-  const ghBase = `https://github.com/qianyiai/kurocat/releases/download/${LOCAL_MIRROR_VERSION}`;
+  const ghBase = `https://github.com/qianyiai/KuroCat/releases/download/${LOCAL_MIRROR_VERSION}`;
   const macLocalBase = `/releases/${MACOS_MIRROR_VERSION}`;
-  const macGhBase = `https://github.com/qianyiai/kurocat/releases/download/${MACOS_MIRROR_VERSION}`;
+  const macGhBase = `https://github.com/qianyiai/KuroCat/releases/download/${MACOS_MIRROR_VERSION}`;
   const n65 = `KuroCat-${LOCAL_MIRROR_VER_NUM}-x64-setup.exe`;
   const nMac = `KuroCat-${MACOS_MIRROR_VERSION}-macos-universal.dmg`;
   return {
@@ -260,8 +260,8 @@ async function syncGithubMetadata(): Promise<void> {
   const timer = window.setTimeout(() => controller.abort(), 4500);
   try {
     const [repoRes, relRes] = await Promise.all([
-      fetch('https://api.github.com/repos/qianyiai/kurocat', { signal: controller.signal }),
-      fetch('https://api.github.com/repos/qianyiai/kurocat/releases/latest', { signal: controller.signal }),
+      fetch('https://api.github.com/repos/qianyiai/KuroCat', { signal: controller.signal }),
+      fetch('https://api.github.com/repos/qianyiai/KuroCat/releases/latest', { signal: controller.signal }),
     ]);
 
     if (repoRes.ok) {

@@ -5,7 +5,7 @@
 KuroCat is developed and maintained exclusively by **Qianyi (`@qianyiai`)**. Only the following distribution channels are official:
 
 1. **Official Website & Verified CDN**: `https://kurocat.org/` (Downloads & SHA-256: `https://kurocat.org/download/`)
-2. **Official GitHub Repository & Releases**: `https://github.com/qianyiai/kurocat`
+2. **Official GitHub Repository & Releases**: `https://github.com/qianyiai/KuroCat`
 3. **Official macOS Homebrew Tap**: `https://github.com/qianyiai/homebrew-tap` (`brew install --cask qianyiai/tap/kurocat`)
 
 Every official release publishes 64-character **SHA-256 checksums** on both GitHub Releases and `https://kurocat.org/download/`.
@@ -37,8 +37,8 @@ We have identified an unaffiliated impersonation website (**`kurocat.net`**, reg
 2. **Delete the downloaded ZIP and extracted `KuroCat.v5.1.0` folder**.
 3. Run a full offline/deep scan with **Windows Defender (Microsoft Defender Offline)** and a reputable second-opinion scanner (e.g., Malwarebytes).
 4. **From a separate, clean device**, rotate passwords, sign out active browser sessions, and revoke API tokens / SSH keys / crypto wallets that were stored in browsers or locally on the affected machine.
-5. Reinstall KuroCat **only** from `https://kurocat.org/download/` or `https://github.com/qianyiai/kurocat/releases` and verify the SHA-256 hash before running.
+5. Reinstall KuroCat **only** from `https://kurocat.org/download/` or `https://github.com/qianyiai/KuroCat/releases` and verify the SHA-256 hash before running.
 
 ## Reporting Security Issues or Impersonation Sites
 
-Please report vulnerabilities or fake distribution domains via [GitHub Issues](https://github.com/qianyiai/kurocat/issues) or GitHub Private Vulnerability Reporting on `qianyiai/kurocat`.
+Please report vulnerabilities or fake distribution domains via [GitHub Issues](https://github.com/qianyiai/KuroCat/issues) or GitHub Private Vulnerability Reporting on `qianyiai/KuroCat`.
