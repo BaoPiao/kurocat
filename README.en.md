@@ -21,14 +21,23 @@
   </p>
 
   <p>
-    <a href="https://kurocat.org/en/#playground"><strong>🌐 Live 3D Playground</strong></a> &nbsp;·&nbsp;
-    <a href="#download"><strong>📥 Download</strong></a> &nbsp;·&nbsp;
-    <a href="#mcp"><strong>🤖 AI / MCP</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/en/"><strong>🌐 Official Website &amp; 3D Playground</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/en/download/"><strong>📥 Downloads &amp; SHA-256</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/en/vs/bongo-cat/"><strong>⚡ vs Bongo Cat</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/en/obs/"><strong>🎥 OBS Overlay</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/en/mcp/"><strong>🤖 AI / MCP</strong></a> &nbsp;·&nbsp;
     <a href="https://github.com/qianyiai/homebrew-tap"><strong>🍺 Homebrew</strong></a>
   </p>
 
-  <sub>🔒 Official Channels Only: <a href="https://github.com/qianyiai/kurocat">GitHub</a> · <a href="https://kurocat.org/en/">kurocat.org</a> · <a href="https://github.com/qianyiai/homebrew-tap">Homebrew Tap</a> (third-party mirrors are unaffiliated)</sub>
+  <sub>🔒 Official Channels Only: <a href="https://kurocat.org/en/"><strong>kurocat.org (Official Website)</strong></a> · <a href="https://github.com/qianyiai/kurocat">GitHub</a> · <a href="https://github.com/qianyiai/homebrew-tap">Homebrew Tap</a> · <a href="https://kurocat.org/en/security/">Security Advisory</a></sub>
 </div>
+
+> [!CAUTION]
+> **Official Website Notice & Active Malware Impersonation Warning (`kurocat.net`)**
+>
+> **The ONLY official website for KuroCat is [`https://kurocat.org/`](https://kurocat.org/en/)** and the only official repository is `github.com/qianyiai/kurocat`.
+>
+> An unaffiliated impersonation domain (**`kurocat.net`**) is distributing an unauthorized **`64.25 MB` `KuroCat.v5.1.0.zip`** (SHA-256: `19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d`) containing an unknown `35.92 MB KuroCat.exe` plus `50 MiB` of uncompressed padding (`bin/resources.pak` / `bin/versions.dat`) — a textbook scanner-evasion trojan/infostealer pattern. Official Windows 10/11 installers are only **`~2.2 MB`**. **Do NOT download or run anything from `kurocat.net`!** See our [**Official Security Advisory**](https://kurocat.org/en/security/) and [`SECURITY.md`](./SECURITY.md).
 
 <br />
 

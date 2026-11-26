@@ -47,6 +47,12 @@ const LOCALE_PAGES = [
       vsBongo: 'KuroCat vs Bongo Cat',
       obs: 'OBS Transparent Guide',
       mcp: 'AI MCP Studio',
+      security: 'Security Advisory',
+    },
+    alert: {
+      badge: 'ONLY OFFICIAL SITE',
+      text: '<strong>kurocat.org</strong> is the ONLY official KuroCat website (<code>github.com/qianyiai/kurocat</code>). ⚠️ WARNING: Impersonator <strong>kurocat.net</strong> distributes an unauthorized 64 MB <code>KuroCat.v5.1.0.zip</code> padded with 50 MiB junk &amp; a fake 36 MB binary — do NOT download or run it!',
+      cta: 'Security Advisory →',
     },
   },
   {
@@ -78,6 +84,12 @@ const LOCALE_PAGES = [
       vsBongo: 'Bongo Cat 比較',
       obs: 'OBS 透過配信ガイド',
       mcp: 'AI MCP カスタム',
+      security: '偽サイト注意・セキュリティ',
+    },
+    alert: {
+      badge: '唯一の公式サイト',
+      text: '<strong>kurocat.org</strong> が KuroCat 唯一の公式サイトです（<code>github.com/qianyiai/kurocat</code>）。⚠️ 偽サイト <strong>kurocat.net</strong> の 64 MB <code>KuroCat.v5.1.0.zip</code> は 50 MiB の異常パディングと非公式 36 MB 実行ファイルを含む危険な偽ビルドのため絶対に実行しないでください！',
+      cta: '偽サイト警告・検証 →',
     },
   },
   {
@@ -109,6 +121,12 @@ const LOCALE_PAGES = [
       vsBongo: 'Bongo Cat 비교',
       obs: 'OBS 투명 방송 가이드',
       mcp: 'AI MCP 커스텀',
+      security: '사칭 주의·보안 공지',
+    },
+    alert: {
+      badge: '유일한 공식 사이트',
+      text: '<strong>kurocat.org</strong>는 KuroCat의 유일한 공식 사이트입니다 (<code>github.com/qianyiai/kurocat</code>). ⚠️ 사칭 사이트 <strong>kurocat.net</strong>의 64 MB <code>KuroCat.v5.1.0.zip</code>에는 비공식 36 MB 실행 파일과 50 MiB 패딩이 포함되어 있어 악성코드 위험이 높으니 절대 실행하지 마세요!',
+      cta: '보안 공지·검증 →',
     },
   },
 ];
@@ -208,11 +226,24 @@ for (const loc of LOCALE_PAGES) {
     `"name": "${escapeJsonStr(loc.faqOfficialQ)}",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "${escapeJsonStr(loc.faqOfficialA)}"\n            }`
   );
 
-  // Localize footer hub links (href + crawler-visible anchor text) to that locale's subpages
+  // Localize official alert bar & footer hub links (href + crawler-visible text)
+  html = html.replace(
+    /data-i18n="alert\.badge">[^<]*<\/span>/g,
+    `data-i18n="alert.badge">${escapeAttr(loc.alert.badge)}</span>`
+  );
+  html = html.replace(
+    /data-i18n-html="alert\.text">[\s\S]*?<\/span>/,
+    `data-i18n-html="alert.text">${loc.alert.text}</span>`
+  );
+  html = html.replace(
+    /data-i18n="alert\.cta">[^<]*<\/a>/g,
+    `data-i18n="alert.cta">${escapeAttr(loc.alert.cta)}</a>`
+  );
   html = html.replace(/href="\/download\/"/g, `href="/${loc.code}/download/"`);
   html = html.replace(/href="\/vs\/bongo-cat\/"/g, `href="/${loc.code}/vs/bongo-cat/"`);
   html = html.replace(/href="\/obs\/"/g, `href="/${loc.code}/obs/"`);
   html = html.replace(/href="\/mcp\/"/g, `href="/${loc.code}/mcp/"`);
+  html = html.replace(/href="\/security\/"/g, `href="/${loc.code}/security/"`);
   html = html.replace(
     /data-i18n="footer\.download">[^<]*<\/a>/g,
     `data-i18n="footer.download">${escapeAttr(loc.footerLinks.download)}</a>`
@@ -228,6 +259,10 @@ for (const loc of LOCALE_PAGES) {
   html = html.replace(
     /data-i18n="footer\.mcp">[^<]*<\/a>/g,
     `data-i18n="footer.mcp">${escapeAttr(loc.footerLinks.mcp)}</a>`
+  );
+  html = html.replace(
+    /data-i18n="footer\.security">[^<]*<\/a>/g,
+    `data-i18n="footer.security">${escapeAttr(loc.footerLinks.security)}</a>`
   );
 
   const outDir = path.join(distDir, loc.code);
@@ -361,6 +396,7 @@ All official downloads, documentation, and source code are published exclusively
 - [KuroCat vs Bongo Cat Comparison](https://kurocat.org/vs/bongo-cat/): Feature, memory/GPU footprint, 3D/2D engine, macOS/Linux support, OBS transparency, and privacy comparison (also at \`/en/vs/bongo-cat/\`, \`/ja/vs/bongo-cat/\`, \`/ko/vs/bongo-cat/\`).
 - [OBS Transparent Browser Source Guide](https://kurocat.org/obs/): Zero chroma-key local \`http://127.0.0.1:27421/obs\` setup, OBS-Only mode, synced password privacy guard, and \`KuroCat Live\` chroma fallback (also at \`/en/obs/\`, \`/ja/obs/\`, \`/ko/obs/\`).
 - [MCP AI Cat Studio & Coding Companion Guide](https://kurocat.org/mcp/): Built-in Stdio & Streamable HTTP (\`127.0.0.1:27420/mcp\`) setup for Claude Desktop, Cursor, Antigravity, and Windsurf, plus AI cat sculpting prompts (also at \`/en/mcp/\`, \`/ja/mcp/\`, \`/ko/mcp/\`).
+- [Official Security Advisory — Fake Site kurocat.net Warning](https://kurocat.org/security/): Forensic evidence and IoCs warning users NOT to download the unauthorized 64.25 MB padded ZIP (\`KuroCat.v5.1.0.zip\`, SHA-256 \`19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d\`) hosted by impersonator \`kurocat.net\` (also at \`/en/security/\`, \`/ja/security/\`, \`/ko/security/\`).
 - [Official GitHub Repository](https://github.com/qianyiai/kurocat): MIT open-source codebase, issue tracker, and GitHub Releases.
 - [Official macOS Homebrew Tap](https://github.com/qianyiai/homebrew-tap): Install on macOS via \`brew install --cask qianyiai/tap/kurocat\`.
 - [Author Homepage (Qianyi)](https://qianyi.one/): Author profile and projects.
@@ -418,6 +454,7 @@ Every topic hub is pre-rendered in Chinese (\`zh-CN\`), English (\`/en/\`), Japa
 - **KuroCat vs Bongo Cat Comparison**: https://kurocat.org/vs/bongo-cat/ · https://kurocat.org/en/vs/bongo-cat/ · https://kurocat.org/ja/vs/bongo-cat/ · https://kurocat.org/ko/vs/bongo-cat/
 - **OBS Zero Chroma-Key Overlay Guide**: https://kurocat.org/obs/ · https://kurocat.org/en/obs/ · https://kurocat.org/ja/obs/ · https://kurocat.org/ko/obs/
 - **MCP AI Cat Studio & Coding Companion**: https://kurocat.org/mcp/ · https://kurocat.org/en/mcp/ · https://kurocat.org/ja/mcp/ · https://kurocat.org/ko/mcp/
+- **Official Security Advisory (Fake \`kurocat.net\` Malware Warning)**: https://kurocat.org/security/ · https://kurocat.org/en/security/ · https://kurocat.org/ja/security/ · https://kurocat.org/ko/security/ — WARNING: \`kurocat.net\` is an unauthorized impersonation site distributing a padded 64.25 MB \`KuroCat.v5.1.0.zip\` (SHA-256 \`19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d\`) containing an unknown 35.92 MB executable plus 50 MiB of uncompressed junk padding (\`resources.pak\` / \`versions.dat\`). Official Windows 10/11 installers are only ~2.2 MB.
 
 ## Direct Official Downloads (v5.1.2)
 

@@ -127,8 +127,9 @@ const NAV_I18N = {
     vs: 'vs Bongo Cat',
     obs: 'OBS 直播源',
     mcp: 'AI 伴侣 & MCP',
+    security: '防伪安全公告',
     github: 'GitHub',
-    officialStrip: '🔒 唯一官方渠道：kurocat.org · github.com/qianyiai/kurocat · qianyiai/homebrew-tap（kurocat.net 等第三方站点非官方维护）',
+    officialStrip: '🔒 唯一官方渠道：kurocat.org · github.com/qianyiai/kurocat · qianyiai/homebrew-tap（⚠️ 谨防假冒站 kurocat.net 分发的 64 MB 疑似木马假包）',
     ctaPlay: '打开 3D 在线试玩 →',
     ctaDl: '免费下载最新版 →',
     copied: '已复制 ✓',
@@ -143,8 +144,9 @@ const NAV_I18N = {
     vs: 'vs Bongo Cat',
     obs: 'OBS Overlay',
     mcp: 'AI & MCP Studio',
+    security: 'Security Advisory',
     github: 'GitHub',
-    officialStrip: '🔒 Official channels only: kurocat.org · github.com/qianyiai/kurocat · qianyiai/homebrew-tap (third-party domains like kurocat.net are unofficial)',
+    officialStrip: '🔒 Official channels only: kurocat.org · github.com/qianyiai/kurocat · qianyiai/homebrew-tap (⚠️ WARNING: kurocat.net distributes a fake 64 MB padded ZIP — do NOT run it)',
     ctaPlay: 'Try Live 3D Playground →',
     ctaDl: 'Free Official Download →',
     copied: 'Copied ✓',
@@ -159,8 +161,9 @@ const NAV_I18N = {
     vs: 'vs Bongo Cat',
     obs: 'OBS 透過配信',
     mcp: 'AI & MCP',
+    security: '偽サイト警告',
     github: 'GitHub',
-    officialStrip: '🔒 公式配布元のみ：kurocat.org · github.com/qianyiai/kurocat · qianyiai/homebrew-tap（kurocat.net 等の第三者サイトは非公式です）',
+    officialStrip: '🔒 公式配布元のみ：kurocat.org · github.com/qianyiai/kurocat · qianyiai/homebrew-tap（⚠️ 偽サイト kurocat.net の 64 MB 不正 ZIP に注意）',
     ctaPlay: 'ブラウザで 3D 体験する →',
     ctaDl: '最新公式版を無料ダウンロード →',
     copied: 'コピー済 ✓',
@@ -175,8 +178,9 @@ const NAV_I18N = {
     vs: 'vs Bongo Cat',
     obs: 'OBS 투명 오버레이',
     mcp: 'AI & MCP',
+    security: '보안 공지',
     github: 'GitHub',
-    officialStrip: '🔒 유일한 공식 채널: kurocat.org · github.com/qianyiai/kurocat · qianyiai/homebrew-tap (kurocat.net 등 제3자 사이트는 비공식입니다)',
+    officialStrip: '🔒 유일한 공식 채널: kurocat.org · github.com/qianyiai/kurocat · qianyiai/homebrew-tap (⚠️ 사칭 사이트 kurocat.net의 64 MB 변조 ZIP 주의)',
     ctaPlay: '3D 실시간 체험 열기 →',
     ctaDl: '공식 최신 버전 무료 다운로드 →',
     copied: '복사됨 ✓',
@@ -187,7 +191,7 @@ const NAV_I18N = {
   },
 };
 
-export const SUBPAGE_SLUGS = ['download', 'vs/bongo-cat', 'obs', 'mcp'];
+export const SUBPAGE_SLUGS = ['download', 'vs/bongo-cat', 'obs', 'mcp', 'security'];
 
 function esc(str) {
   return String(str)
@@ -447,8 +451,9 @@ function renderPage({ locale, slug, title, description, eyebrow, h1, lead, bread
     'vs/bongo-cat': { title: nav.vs, desc: { zh: '与 Bongo Cat 功能、占用与开源对比', en: '3D, macOS, OBS & AI comparison', ja: 'Bongo Cat との機能・負荷比較', ko: 'Bongo Cat 기능·성능 비교' }[locale] },
     obs: { title: nav.obs, desc: { zh: '免绿幕原生 Alpha 透明直播源教程', en: 'Zero chroma-key Browser Source setup', ja: 'クロマキー不要の OBS 透過導入手順', ko: '크로마키 없는 OBS 투명 브라우저 소스' }[locale] },
     mcp: { title: nav.mcp, desc: { zh: 'Claude / Cursor / 豆包联动与 22 项 AI 捏脸', en: 'Claude/Cursor hooks & 22 facial params', ja: 'AI 連携＆22 項目の顔カスタムガイド', ko: 'AI 코딩 연동 & 22종 얼굴 커스텀' }[locale] },
+    security: { title: nav.security, desc: { zh: '唯一官网认证 & 假冒站 kurocat.net 木马取证警告', en: 'Official verification & fake kurocat.net malware advisory', ja: '公式サイト認証＆偽サイト kurocat.net マルウェア警告', ko: '공식 사이트 인증 & 사칭 kurocat.net 악성코드 경고' }[locale] },
   };
-  const relatedCards = SUBPAGE_SLUGS.filter((s) => s !== slug)
+  const relatedCards = SUBPAGE_SLUGS.filter((s) => s !== slug).slice(0, 3)
     .map(
       (s) =>
         `<a class="related-link" href="${pagePath(locale, s)}"><strong>${esc(relatedMap[s].title)} →</strong><span>${esc(relatedMap[s].desc)}</span></a>`,
@@ -513,6 +518,7 @@ function renderPage({ locale, slug, title, description, eyebrow, h1, lead, bread
           <a href="${pagePath(locale, 'vs/bongo-cat')}"${slug === 'vs/bongo-cat' ? ' class="active"' : ''}>${esc(nav.vs)}</a>
           <a href="${pagePath(locale, 'obs')}"${slug === 'obs' ? ' class="active"' : ''}>${esc(nav.obs)}</a>
           <a href="${pagePath(locale, 'mcp')}"${slug === 'mcp' ? ' class="active"' : ''}>${esc(nav.mcp)}</a>
+          <a href="${pagePath(locale, 'security')}"${slug === 'security' ? ' class="active"' : ''}>${esc(nav.security)}</a>
           <a href="https://github.com/qianyiai/kurocat" target="_blank" rel="me noopener">${esc(nav.github)}</a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Language">
@@ -563,6 +569,7 @@ function renderPage({ locale, slug, title, description, eyebrow, h1, lead, bread
       <a href="${pagePath(locale, 'vs/bongo-cat')}">${esc(nav.vs)}</a>
       <a href="${pagePath(locale, 'obs')}">${esc(nav.obs)}</a>
       <a href="${pagePath(locale, 'mcp')}">${esc(nav.mcp)}</a>
+      <a href="${pagePath(locale, 'security')}">${esc(nav.security)}</a>
       <a href="https://qianyi.one/" rel="me noopener">Qianyi</a>
       <a href="https://github.com/qianyiai/kurocat" target="_blank" rel="me noopener">GitHub</a>
     </div>
@@ -1245,12 +1252,205 @@ function buildMcpPage(locale, today) {
   });
 }
 
+function buildSecurityPage(locale, today) {
+  const copy = {
+    zh: {
+      title: 'KuroCat 官方防伪安全公告 — 警惕假冒网站 kurocat.net 分发 64 MB 疑似木马假包',
+      description: 'KuroCat 唯一官方网站为 kurocat.org（开源仓库 github.com/qianyiai/kurocat）。本文公布假冒网站 kurocat.net 分发 64.25 MB 非官方填充包 KuroCat.v5.1.0.zip 的取证证据、SHA-256 对比与中招处置步骤。',
+      eyebrow: 'Security Advisory · 官方防伪认证与高危假站通告',
+      h1: 'KuroCat 官方防伪公告：谨防假冒站 kurocat.net 木马风险',
+      lead: 'KuroCat 由谦一（@qianyiai）唯一开源维护。近期出现高仿域名 kurocat.net 冒充「KuroCat 官网」并向 Windows 用户分发非官方 64.25 MB 篡改压缩包。请认准唯一官网 kurocat.org 与官方 GitHub。',
+      breadcrumb: '防伪安全公告',
+      officialTitle: '✅ 唯一受信任的官方渠道（仅此 3 处）',
+      officialList: [
+        '唯一官方网站与高速下载中心：https://kurocat.org/ 与 https://kurocat.org/download/',
+        '唯一官方开源仓库与 Releases：https://github.com/qianyiai/kurocat',
+        '唯一官方 macOS Homebrew 源：https://github.com/qianyiai/homebrew-tap（brew install --cask qianyiai/tap/kurocat）',
+      ],
+      iocTitle: '🚨 假冒网站 kurocat.net 实锤取证对比',
+      iocIntro: 'kurocat.net（注册于 2026-11-24，与作者完全无关）在 downloads.html 中将 macOS/Linux/Android 指向真正的 GitHub 作为伪装，却唯独将 Windows 10/11 主下载按钮替换为自己托管的异常压缩包：',
+      cols: ['比对项', '正版官方（kurocat.org / GitHub）', '高危假冒站（kurocat.net）'],
+      rows: [
+        ['官方状态', '✅ 唯一官方网站与原作者仓库', '❌ 仿冒站点，与作者完全无关'],
+        ['Windows 10/11 主文件', 'KuroCat-5.1.2-x64-setup.exe（v5.1.0 为 2.16 MB .exe）', 'KuroCat.v5.1.0.zip（官方从未发布过此 ZIP！）'],
+        ['安装包体积', '2.23 MB（原生 Rust + Tauri v2）', '64.25 MB（67,371,456 字节，异常膨胀近 30 倍）'],
+        ['内部可执行文件', '单一原生 Rust 二进制（约 5–6 MB）', '非官方 35.92 MB KuroCat.exe（CRC32: 0e67ba17）'],
+        ['异常填充文件（反查杀特征）', '无任何 .pak / .dat 填充文件', 'bin/resources.pak（精确 48.00 MiB 未压缩）+ bin/versions.dat（精确 2.00 MiB 未压缩），典型绕过杀软/沙箱体积限制的木马手法'],
+        ['可疑包 SHA-256（切勿运行）', '详见 /download/ 逐一公开校验表', '19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d'],
+      ],
+      remedyTitle: '🛡️ 如果你不慎从 kurocat.net 下载或运行了该文件怎么办？',
+      remedySteps: [
+        '立即断开该 Windows 电脑的网络连接，防止潜在窃密木马回传凭证或持久化驻留。',
+        '彻底删除下载的 KuroCat.v5.1.0.zip 及解压后的全部文件夹。',
+        '使用 Windows Defender 脱机扫描（Microsoft Defender Offline）并配合主流杀毒工具进行全盘查杀。',
+        '在另一台干净设备上修改该电脑浏览器曾登录过的重要密码，退出所有活跃会话，并吊销可能保存在本机的 API Token、SSH 密钥及加密钱包凭据。',
+        '仅从唯一官网 https://kurocat.org/download/ 或 https://github.com/qianyiai/kurocat/releases 重新下载正版，并使用 Get-FileHash 核对 SHA-256。',
+      ],
+      faqs: [
+        { q: 'kurocat.net 是 KuroCat 的官网或安全镜像吗？', a: '不是！kurocat.net 与作者谦一（@qianyiai）没有任何关系，且正在分发含 50 MiB 异常填充与非官方 35.92 MB exe 的 64.25 MB 可疑压缩包。KuroCat 唯一官网为 https://kurocat.org/。' },
+        { q: '为什么正版 Windows 安装包只有 2.2 MB，而假包高达 64 MB？', a: '正版 KuroCat 采用 Rust + Tauri v2 复用系统 WebView2，因此安装包仅 2.23 MB。假冒包强行塞入精确 48 MiB 的 resources.pak 与 2 MiB 的 versions.dat（未压缩 STORED），这是恶意软件绕过部分安全扫描器文件大小上限的典型手法。' },
+        { q: '如何用一条命令确认我下载的是正版 KuroCat？', a: '在 PowerShell 运行 Get-FileHash KuroCat-5.1.2-x64-setup.exe -Algorithm SHA256，确认输出与 https://kurocat.org/download/ 及 GitHub Releases 公布的 64 位哈希完全一致即可。' },
+      ],
+    },
+    en: {
+      title: 'KuroCat Official Security Advisory — Warning Against Fake Site kurocat.net (64 MB Suspected Malware ZIP)',
+      description: 'https://kurocat.org/ (github.com/qianyiai/kurocat) is the ONLY official KuroCat website. Read forensic proof and IoCs showing impersonator kurocat.net distributes an unauthorized 64.25 MB padded ZIP (KuroCat.v5.1.0.zip).',
+      eyebrow: 'Security Advisory · Official Verification & Impersonation Alert',
+      h1: 'Official Security Advisory: Avoid Fake Site kurocat.net',
+      lead: 'KuroCat is maintained exclusively by Qianyi (@qianyiai). An unaffiliated impersonator domain (kurocat.net) is spoofing KuroCat and serving an unauthorized 64.25 MB padded archive to Windows users. Only trust kurocat.org and github.com/qianyiai/kurocat.',
+      breadcrumb: 'Security Advisory',
+      officialTitle: '✅ ONLY Official & Trusted Distribution Channels',
+      officialList: [
+        'Official Website & Verified CDN: https://kurocat.org/ and https://kurocat.org/en/download/',
+        'Official GitHub Repository & Releases: https://github.com/qianyiai/kurocat',
+        'Official macOS Homebrew Tap: https://github.com/qianyiai/homebrew-tap (brew install --cask qianyiai/tap/kurocat)',
+      ],
+      iocTitle: '🚨 Forensic Comparison: Official KuroCat vs Impersonator kurocat.net',
+      iocIntro: 'Registered on 2026-11-24, kurocat.net links secondary OS builds to our real GitHub as a decoy, while replacing the primary Windows 10/11 download with a self-hosted suspicious archive:',
+      cols: ['Attribute', 'Official KuroCat (kurocat.org / GitHub)', 'Impersonator (kurocat.net)'],
+      rows: [
+        ['Official Affiliation', '✅ Exclusive official website & repo', '❌ Unaffiliated impersonation site'],
+        ['Windows 10/11 Package', 'KuroCat-5.1.2-x64-setup.exe (v5.1.0 was 2.16 MB .exe)', 'KuroCat.v5.1.0.zip (never published by KuroCat!)'],
+        ['Download Size', '2.23 MB (native Rust + Tauri v2)', '64.25 MB (67,371,456 bytes — ~30x bloated)'],
+        ['Executable Binary', 'Native Rust binary (~5–6 MB unpacked)', 'Unauthorized 35.92 MB KuroCat.exe (CRC32: 0e67ba17)'],
+        ['Evasion Padding', 'Zero .pak / .dat junk files', 'bin/resources.pak (exact 48.00 MiB STORED) + bin/versions.dat (exact 2.00 MiB STORED) — textbook AV/sandbox size-limit evasion'],
+        ['Suspicious ZIP SHA-256', 'All official hashes published at /en/download/', '19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d'],
+      ],
+      remedyTitle: '🛡️ What to Do If You Downloaded or Ran Files from kurocat.net',
+      remedySteps: [
+        'Disconnect the affected Windows machine from the network immediately.',
+        'Delete KuroCat.v5.1.0.zip and any extracted folder.',
+        'Run Microsoft Defender Offline full scan plus a reputable second-opinion anti-malware scan.',
+        'From a separate clean device, change passwords, invalidate browser sessions, and revoke any API tokens, SSH keys, or crypto wallets stored on the affected PC.',
+        'Download KuroCat ONLY from https://kurocat.org/en/download/ or https://github.com/qianyiai/kurocat/releases and verify SHA-256.',
+      ],
+      faqs: [
+        { q: 'Is kurocat.net official or safe to download from?', a: 'No. kurocat.net is completely unaffiliated with KuroCat and distributes an unauthorized 64.25 MB ZIP padded with 50 MiB of uncompressed junk and an unknown 35.92 MB executable. Use only https://kurocat.org/ or https://github.com/qianyiai/kurocat.' },
+        { q: 'Why does the fake ZIP include a 48 MiB resources.pak and 2 MiB versions.dat?', a: 'Official KuroCat has no such files and weighs only ~2.2 MB. Padding an archive past 64 MB with uncompressed data is a well-known malware/infostealer technique to evade cloud AV upload and sandbox size thresholds.' },
+      ],
+    },
+    ja: {
+      title: 'KuroCat 公式セキュリティ警告 — 偽サイト kurocat.net の 64 MB 危険偽ビルドに注意',
+      description: 'KuroCat 唯一の公式サイトは kurocat.org（github.com/qianyiai/kurocat）です。偽サイト kurocat.net が配布している 64.25 MB の非公式 KuroCat.v5.1.0.zip（50 MiB パディング＋不明な 35.92 MB exe）の検証証拠と対処手順を公開します。',
+      eyebrow: 'Security Advisory · 公式サイト認証＆偽サイト警告',
+      h1: '公式セキュリティ警告：偽サイト kurocat.net にご注意',
+      lead: 'KuroCat の唯一の公式サイトは kurocat.org です。作者と無関係ななりすましサイト kurocat.net が、Windows 向けに異常パディング入りの 64.25 MB 偽 ZIP を配布しています。絶対にダウンロード・実行しないでください。',
+      breadcrumb: '偽サイト警告',
+      officialTitle: '✅ 唯一の公式・安全な配布チャネル',
+      officialList: [
+        '公式ウェブサイト＆ダウンロード：https://kurocat.org/ja/ および https://kurocat.org/ja/download/',
+        '公式 GitHub リポジトリ：https://github.com/qianyiai/kurocat',
+        '公式 macOS Homebrew Tap：https://github.com/qianyiai/homebrew-tap',
+      ],
+      iocTitle: '🚨 正規ビルドと偽サイト kurocat.net の比較証拠',
+      iocIntro: 'kurocat.net は Mac/Linux 等を本物の GitHub へリンクして信用させつつ、Windows 10/11 の主ダウンロードだけを自前の 64.25 MB 偽ファイルに差し替えています：',
+      cols: ['項目', '公式 KuroCat（kurocat.org / GitHub）', '偽サイト（kurocat.net）'],
+      rows: [
+        ['公式関係', '✅ 唯一の公式サイト・作者リポジトリ', '❌ 作者と完全に無関係な偽サイト'],
+        ['Windows 10/11 ファイル', 'KuroCat-5.1.2-x64-setup.exe（約 2.23 MB）', 'KuroCat.v5.1.0.zip（公式には存在しない）'],
+        ['容量と中身', '2.23 MB の正規 Rust インストーラー', '64.25 MB（不明な 35.92 MB exe ＋ 正確に 48 MiB の resources.pak ＋ 2 MiB の versions.dat）'],
+        ['危険 ZIP の SHA-256', '/ja/download/ に全公式ハッシュ掲載', '19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d'],
+      ],
+      remedyTitle: '🛡️ すでに kurocat.net から実行してしまった場合の対処',
+      remedySteps: [
+        '直ちに該当 PC のネットワーク接続を切断してください。',
+        'ダウンロードした ZIP および展開フォルダを削除してください。',
+        'Microsoft Defender オフラインスキャン等でフルスキャンを実行してください。',
+        '別の安全な端末から主要アカウントのパスワード変更・セッション無効化・API トークン/SSH 鍵の失効を行ってください。',
+        '今後は必ず https://kurocat.org/ja/download/ または GitHub 公式から SHA-256 を確認して導入してください。',
+      ],
+      faqs: [
+        { q: 'kurocat.net は安全ですか？', a: 'いいえ。マルウェア検知回避のための 50 MiB パディングと非公式 35.92 MB exe を含む危険な偽パッケージを配布しています。必ず https://kurocat.org/ja/ をご利用ください。' },
+      ],
+    },
+    ko: {
+      title: 'KuroCat 공식 보안 공지 — 사칭 사이트 kurocat.net 64 MB 변조 ZIP 악성코드 주의',
+      description: 'KuroCat의 유일한 공식 사이트는 kurocat.org(github.com/qianyiai/kurocat)입니다. 사칭 사이트 kurocat.net이 유포하는 64.25 MB 비공식 KuroCat.v5.1.0.zip의 분석 증거와 대처 방법을 안내합니다.',
+      eyebrow: 'Security Advisory · 공식 인증 및 사칭 주의',
+      h1: '공식 보안 공지: 사칭 사이트 kurocat.net 악성코드 위험 주의',
+      lead: 'KuroCat의 유일한 공식 웹사이트는 kurocat.org 입니다. 제작자와 무관한 kurocat.net이 Windows 사용자에게 50 MiB 비정상 패딩이 들어간 64.25 MB 가짜 ZIP을 유포하고 있으니 절대 실행하지 마세요.',
+      breadcrumb: '보안 공지',
+      officialTitle: '✅ 유일한 공식 신뢰 채널',
+      officialList: [
+        '공식 웹사이트 및 다운로드: https://kurocat.org/ko/ · https://kurocat.org/ko/download/',
+        '공식 GitHub 저장소: https://github.com/qianyiai/kurocat',
+        '공식 macOS Homebrew Tap: https://github.com/qianyiai/homebrew-tap',
+      ],
+      iocTitle: '🚨 정식 빌드 vs 사칭 사이트 kurocat.net 비교 증거',
+      iocIntro: 'kurocat.net은 다른 OS 링크만 실제 GitHub로 연결해 안심시킨 뒤, Windows 10/11 메인 다운로드만 자체 호스팅된 변조 파일로 바꿔치기했습니다:',
+      cols: ['항목', '공식 KuroCat (kurocat.org / GitHub)', '사칭 사이트 (kurocat.net)'],
+      rows: [
+        ['공식 여부', '✅ 유일한 공식 사이트 및 원작자 저장소', '❌ 제작자와 무관한 사칭 사이트'],
+        ['Windows 10/11 파일', 'KuroCat-5.1.2-x64-setup.exe (2.23 MB)', 'KuroCat.v5.1.0.zip (공식 배포 이력 없음)'],
+        ['용량 및 내부 구조', '네이티브 Rust 설치 파일 (2.23 MB)', '64.25 MB (출처 불명 35.92 MB exe + 정확히 48 MiB resources.pak + 2 MiB versions.dat)'],
+        ['의심 ZIP SHA-256', '/ko/download/에서 공식 해시 전체 공개', '19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d'],
+      ],
+      remedyTitle: '🛡️ 이미 kurocat.net 파일을 실행했다면?',
+      remedySteps: [
+        '즉시 해당 Windows PC의 인터넷 연결을 차단하세요.',
+        '다운로드한 ZIP 파일과 압축 해제 폴더를 모두 삭제하세요.',
+        'Microsoft Defender 오프라인 전체 검사를 실행하세요.',
+        '다른 안전한 기기에서 브라우저에 저장된 계정 비밀번호, 세션, API 토큰 및 SSH 키를 즉시 교체하세요.',
+        '반드시 https://kurocat.org/ko/download/ 또는 공식 GitHub에서만 SHA-256 검증 후 설치하세요.',
+      ],
+      faqs: [
+        { q: 'kurocat.net에서 받아도 되나요?', a: '절대 안 됩니다. 백신 탐지를 회피하려는 50 MiB 패딩과 비공식 35.92 MB exe가 담긴 위험한 가짜 파일입니다. 유일한 공식 사이트는 https://kurocat.org/ko/ 입니다.' },
+      ],
+    },
+  }[locale];
+
+  const bodyHtml = `
+    <section class="card">
+      <h2>${esc(copy.officialTitle)}</h2>
+      <ul>
+        ${copy.officialList.map((li) => `<li><strong>${esc(li)}</strong></li>`).join('\n        ')}
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>${esc(copy.iocTitle)}</h2>
+      <p>${esc(copy.iocIntro)}</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>${copy.cols.map((c) => `<th>${esc(c)}</th>`).join('')}</tr></thead>
+          <tbody>
+            ${copy.rows.map((r) => `<tr><td><strong>${esc(r[0])}</strong></td><td class="badge-yes">${esc(r[1])}</td><td class="badge-no">${esc(r[2])}</td></tr>`).join('\n            ')}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>${esc(copy.remedyTitle)}</h2>
+      <ol>
+        ${copy.remedySteps.map((s) => `<li>${esc(s)}</li>`).join('\n        ')}
+      </ol>
+    </section>
+  `;
+
+  return renderPage({
+    locale,
+    slug: 'security',
+    title: copy.title,
+    description: copy.description,
+    eyebrow: copy.eyebrow,
+    h1: copy.h1,
+    lead: copy.lead,
+    breadcrumbLabel: copy.breadcrumb,
+    bodyHtml,
+    faqs: copy.faqs,
+    howToSteps: null,
+    today,
+  });
+}
+
 export function generateAllSubpages(distDir, today) {
   const builders = {
     download: buildDownloadPage,
     'vs/bongo-cat': buildVsBongoCatPage,
     obs: buildObsPage,
     mcp: buildMcpPage,
+    security: buildSecurityPage,
   };
   let count = 0;
   for (const slug of SUBPAGE_SLUGS) {

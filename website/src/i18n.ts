@@ -234,8 +234,13 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'footer.vsBongo': '对比 Bongo Cat',
       'footer.obs': 'OBS 免抠像教程',
       'footer.mcp': 'AI 捏猫 & MCP',
+      'footer.security': '防伪安全公告',
+      'alert.badge': '官方唯一主页',
+      'alert.cta': '防伪公告与校验 →',
     },
     html: {
+      'alert.text':
+        '<strong>kurocat.org</strong> 是 KuroCat 唯一官方网站（源码 <code>github.com/qianyiai/kurocat</code>）。⚠️ 警惕假冒站 <strong>kurocat.net</strong>（其 64 MB <code>KuroCat.v5.1.0.zip</code> 含非官方 36 MB 程序与 50 MB 异常填充，高度疑似木马，切勿下载）！',
       'hero.title': 'KuroCat · 敲键盘的小黑猫<br /><span>住进你的桌面</span>',
       'hero.sub':
         '免费开源的透明置顶桌面键鼠伴侣，支持 <strong>3D 手办 / 2D 经典</strong> 一键切换，超低占用不卡游戏。内置 <strong>6 款猫咪 + 大肥鱼</strong>，支持摸头呼噜、输密码自动闭眼、OBS 直播与 <strong>AI 捏猫</strong>。',
@@ -515,8 +520,13 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'footer.vsBongo': 'KuroCat vs Bongo Cat',
       'footer.obs': 'OBS Transparent Guide',
       'footer.mcp': 'AI MCP Studio',
+      'footer.security': 'Security Advisory',
+      'alert.badge': 'ONLY OFFICIAL SITE',
+      'alert.cta': 'Security Advisory →',
     },
     html: {
+      'alert.text':
+        '<strong>kurocat.org</strong> is the ONLY official KuroCat website (<code>github.com/qianyiai/kurocat</code>). ⚠️ WARNING: Impersonator <strong>kurocat.net</strong> distributes an unauthorized 64 MB <code>KuroCat.v5.1.0.zip</code> padded with 50 MiB junk &amp; a fake 36 MB binary — do NOT download or run it!',
       'hero.title': 'KuroCat — A Typing Black Cat<br /><span>Living on Your Desktop</span>',
       'hero.sub':
         'A free, open-source transparent desktop typing companion with instant <strong>3D / 2D</strong> switching and ultra-low GPU overhead. Includes <strong>6 cats + BigFish</strong>, head-pat purring, password privacy guard, OBS overlay, and <strong>AI cat studio</strong>.',
@@ -796,8 +806,13 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'footer.vsBongo': 'Bongo Cat 比較',
       'footer.obs': 'OBS 透過配信ガイド',
       'footer.mcp': 'AI MCP カスタム',
+      'footer.security': '偽サイト注意・セキュリティ',
+      'alert.badge': '唯一の公式サイト',
+      'alert.cta': '偽サイト警告・検証 →',
     },
     html: {
+      'alert.text':
+        '<strong>kurocat.org</strong> が KuroCat 唯一の公式サイトです（<code>github.com/qianyiai/kurocat</code>）。⚠️ 偽サイト <strong>kurocat.net</strong> の 64 MB <code>KuroCat.v5.1.0.zip</code> は 50 MiB の異常パディングと非公式 36 MB 実行ファイルを含む危険な偽ビルドのため絶対に実行しないでください！',
       'hero.title': 'KuroCat · キーボードを叩く黒猫が<br /><span>あなたのデスクトップに</span>',
       'hero.sub':
         '無料・オープンソースの透過デスクトップ相棒。<strong>3D / 2D</strong> をワンクリックで切替でき、ゲーム中も超低負荷で動作します。<strong>猫 6 種 + クジラ娘</strong>、なでなでゴロゴロ、パスワード自動保護、OBS 透過配信、<strong>AI カスタム猫</strong> に対応。',
@@ -1077,8 +1092,13 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'footer.vsBongo': 'Bongo Cat 비교',
       'footer.obs': 'OBS 투명 방송 가이드',
       'footer.mcp': 'AI MCP 커스텀',
+      'footer.security': '사칭 주의·보안 공지',
+      'alert.badge': '유일한 공식 사이트',
+      'alert.cta': '보안 공지·검증 →',
     },
     html: {
+      'alert.text':
+        '<strong>kurocat.org</strong>는 KuroCat의 유일한 공식 사이트입니다 (<code>github.com/qianyiai/kurocat</code>). ⚠️ 사칭 사이트 <strong>kurocat.net</strong>의 64 MB <code>KuroCat.v5.1.0.zip</code>에는 비공식 36 MB 실행 파일과 50 MiB 패딩이 포함되어 있어 악성코드 위험이 높으니 절대 실행하지 마세요!',
       'hero.title': 'KuroCat · 키보드를 치는 검은 고양이<br /><span>내 바탕화면에 살아요</span>',
       'hero.sub':
         '무료 오픈소스 투명 바탕화면 키보드·마우스 펫. <strong>3D 피규어 / 2D 클래식</strong> 원클릭 전환과 초저사양 GPU 최적화로 게임 중에도 가볍게 동작합니다. <strong>고양이 6종 + 고래소녀</strong>, 쓰다듬기 골골송, 비밀번호 눈 가리기, OBS 투명 방송, <strong>AI 펫 커스텀</strong>을 지원합니다.',

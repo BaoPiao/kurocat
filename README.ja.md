@@ -21,14 +21,23 @@
   </p>
 
   <p>
-    <a href="https://kurocat.org/ja/#playground"><strong>🌐 Web 3D リアルタイム体験</strong></a> &nbsp;·&nbsp;
-    <a href="#download"><strong>📥 ダウンロード</strong></a> &nbsp;·&nbsp;
-    <a href="#mcp"><strong>🤖 AI / MCP</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/ja/"><strong>🌐 公式サイト＆3D体験</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/ja/download/"><strong>📥 公式ダウンロード</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/ja/vs/bongo-cat/"><strong>⚡ vs Bongo Cat</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/ja/obs/"><strong>🎥 OBS 透過配信</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/ja/mcp/"><strong>🤖 AI / MCP</strong></a> &nbsp;·&nbsp;
     <a href="https://github.com/qianyiai/homebrew-tap"><strong>🍺 Homebrew</strong></a>
   </p>
 
-  <sub>🔒 公式配布チャネルのみ：<a href="https://github.com/qianyiai/kurocat">GitHub</a> · <a href="https://kurocat.org/ja/">kurocat.org</a> · <a href="https://github.com/qianyiai/homebrew-tap">Homebrew Tap</a>（第三者ミラーサイトは非公式です）</sub>
+  <sub>🔒 唯一の公式チャネル：<a href="https://kurocat.org/ja/"><strong>kurocat.org（公式サイト）</strong></a> · <a href="https://github.com/qianyiai/kurocat">GitHub</a> · <a href="https://github.com/qianyiai/homebrew-tap">Homebrew Tap</a> · <a href="https://kurocat.org/ja/security/">偽サイト警告</a></sub>
 </div>
+
+> [!CAUTION]
+> **公式サイトのご案内および偽サイト `kurocat.net` に関するセキュリティ警告**
+>
+> **KuroCat の唯一の公式サイトは [`https://kurocat.org/ja/`](https://kurocat.org/ja/)**、公式リポジトリは `github.com/qianyiai/kurocat` です。
+>
+> 作者と無関係ななりすましサイト **`kurocat.net`** が、非公式の **`64.25 MB` `KuroCat.v5.1.0.zip`**（SHA-256: `19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d`、不明な `35.92 MB KuroCat.exe`＋`50 MiB` の異常パディングファイル入り）を配布しています。公式 Windows 10/11 版は **`約 2.2 MB`** のインストーラーのみです。**`kurocat.net` から絶対にダウンロード・実行しないでください。** 詳細は [**公式セキュリティ警告**](https://kurocat.org/ja/security/) をご確認ください。
 
 <br />
 

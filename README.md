@@ -22,13 +22,22 @@
 
   <p>
     <a href="https://kurocat.org/"><strong>🌐 官网在线试玩</strong></a> &nbsp;·&nbsp;
-    <a href="#download"><strong>📥 立即下载</strong></a> &nbsp;·&nbsp;
-    <a href="#mcp"><strong>🤖 AI / MCP</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/download/"><strong>📥 官方下载与校验</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/vs/bongo-cat/"><strong>⚡ vs Bongo Cat</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/obs/"><strong>🎥 OBS 透明源</strong></a> &nbsp;·&nbsp;
+    <a href="https://kurocat.org/mcp/"><strong>🤖 AI / MCP</strong></a> &nbsp;·&nbsp;
     <a href="https://github.com/qianyiai/homebrew-tap"><strong>🍺 Homebrew</strong></a>
   </p>
 
-  <sub>🔒 唯一官方渠道：<a href="https://github.com/qianyiai/kurocat">GitHub</a> · <a href="https://kurocat.org/">kurocat.org</a> · <a href="https://github.com/qianyiai/homebrew-tap">Homebrew Tap</a>（第三方镜像站非官方维护）</sub>
+  <sub>🔒 唯一官方渠道：<a href="https://kurocat.org/"><strong>kurocat.org（唯一官网）</strong></a> · <a href="https://github.com/qianyiai/kurocat">GitHub</a> · <a href="https://github.com/qianyiai/homebrew-tap">Homebrew Tap</a> · <a href="https://kurocat.org/security/">防伪安全公告</a></sub>
 </div>
+
+> [!CAUTION]
+> **官方渠道声明与安全警示（谨防假冒木马站点 `kurocat.net`）**
+>
+> **KuroCat 的唯一官方网站为 [`https://kurocat.org/`](https://kurocat.org/)**，唯一官方开源仓库为 `github.com/qianyiai/kurocat`。
+>
+> 近期发现仿冒站点 **`kurocat.net`**（与作者完全无关）冒充 KuroCat 官网，并向 Windows 用户分发非官方的 **`64.25 MB` `KuroCat.v5.1.0.zip`**（SHA-256: `19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d`），内含非官方 `35.92 MB KuroCat.exe` 及 `50 MiB` 未压缩填充文件（`bin/resources.pak` / `bin/versions.dat`），而正版官方 Windows 10/11 安装包仅为 **`~2.2 MB` 的 `.exe`** 且从不附带此类文件。**切勿从 `kurocat.net` 下载或运行任何可执行文件！** 详情与自查步骤见 [**官方安全公告**](https://kurocat.org/security/) 与 [`SECURITY.md`](./SECURITY.md)。
 
 <br />
 
