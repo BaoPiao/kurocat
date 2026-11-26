@@ -518,10 +518,22 @@ h1 {
 .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.28); }
 .btn-lime { background: var(--lime); color: var(--lime-ink); border-color: transparent; }
 .btn-sm { padding: 6px 12px; font-size: 12px; }
+html.official-alert-dismissed .official-bar { display: none; }
 .official-bar {
-  margin-top: 18px; padding: 10px 14px; border-radius: 12px;
+  position: relative;
+  margin-top: 18px; padding: 10px 42px 10px 14px; border-radius: 12px;
   background: rgba(212, 240, 68, 0.07); border: 1px solid rgba(212, 240, 68, 0.22);
   font-size: 12.5px; color: #dce89d;
+}
+.official-bar-close {
+  position: absolute; top: 50%; right: 10px; transform: translateY(-50%);
+  width: 24px; height: 24px; padding: 0; border-radius: 999px;
+  border: 1px solid rgba(212, 240, 68, 0.26); background: rgba(0, 0, 0, 0.25);
+  color: #dce89d; display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.official-bar-close:hover {
+  background: rgba(212, 240, 68, 0.18); border-color: rgba(212, 240, 68, 0.55); color: #ffffff;
 }
 .card {
   background: var(--surface); border: 1px solid var(--border);
@@ -755,6 +767,17 @@ function renderPage({ locale, slug, title, description, eyebrow, h1, lead, bread
       `<a class="lang-btn${l === locale ? ' active' : ''}" href="${pagePath(l, slug)}" role="menuitem"><span class="lang-code">${l.toUpperCase()}</span><span>${esc(LOCALE_META[l].nativeName)}</span></a>`,
   ).join('\n            ');
 
+  const closeNoticeLabel = {
+    zh: '关闭公告',
+    en: 'Dismiss notice',
+    ja: 'お知らせを閉じる',
+    ko: '공지 닫기',
+    es: 'Cerrar aviso',
+    pt: 'Fechar aviso',
+    ru: 'Закрыть уведомление',
+    de: 'Hinweis schließen',
+  }[locale];
+
   const moreGuidesTitle = {
     zh: '更多 KuroCat 官方专题',
     en: 'More Official KuroCat Guides',
@@ -798,6 +821,7 @@ function renderPage({ locale, slug, title, description, eyebrow, h1, lead, bread
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>
   <style>${SHARED_CSS}</style>
+  <script>try{if(localStorage.getItem('kurocat_official_alert_dismissed_v1')==='1')document.documentElement.classList.add('official-alert-dismissed');}catch(e){}</script>
 </head>
 <body>
   <header class="global-nav">
@@ -847,7 +871,7 @@ function renderPage({ locale, slug, title, description, eyebrow, h1, lead, bread
         <a class="btn" href="${homeHref}">${esc(nav.ctaPlay)}</a>
         <a class="btn" href="https://github.com/qianyiai/KuroCat" target="_blank" rel="me noopener">GitHub ★</a>
       </div>
-      <div class="official-bar">${esc(nav.officialStrip)}</div>
+      <div class="official-bar" id="official-bar"><span>${esc(nav.officialStrip)}</span><button class="official-bar-close" id="official-bar-close" type="button" aria-label="${esc(closeNoticeLabel)}" title="${esc(closeNoticeLabel)}"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 3.5l7 7m0-7l-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
     </section>
 
     ${bodyHtml}
@@ -907,6 +931,16 @@ function renderPage({ locale, slug, title, description, eyebrow, h1, lead, bread
           setOpen(false);
           trigger.focus();
         }
+      });
+    })();
+    (function () {
+      var bar = document.getElementById('official-bar');
+      var btn = document.getElementById('official-bar-close');
+      if (!bar || !btn) return;
+      btn.addEventListener('click', function () {
+        try { localStorage.setItem('kurocat_official_alert_dismissed_v1', '1'); } catch (e) {}
+        document.documentElement.classList.add('official-alert-dismissed');
+        bar.hidden = true;
       });
     })();
   </script>

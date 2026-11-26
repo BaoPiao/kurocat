@@ -203,6 +203,7 @@
   }
   </script>
   <link rel="stylesheet" href="./src/styles.css" />
+  <script>try{if(localStorage.getItem('kurocat_official_alert_dismissed_v1')==='1')document.documentElement.classList.add('official-alert-dismissed');}catch(e){}</script>
 </head>
 <body>
   <div class="ambient-light"></div>
@@ -249,12 +250,15 @@
     </div>
   </header>
 
-  <div class="official-alert-bar" role="region" aria-label="Official website and security notice">
+  <div class="official-alert-bar" id="official-alert-bar" role="region" aria-label="Official website and security notice">
     <div class="official-alert-inner">
       <span class="official-badge" data-i18n="alert.badge">官方唯一主页</span>
       <span class="official-alert-text" data-i18n-html="alert.text"><strong>kurocat.org</strong> 是 KuroCat 唯一官方网站（源码 <code>github.com/qianyiai/KuroCat</code>）。⚠️ 警惕假冒站 <strong>kurocat.net</strong>（其 64 MB <code>KuroCat.v5.1.0.zip</code> 含非官方 36 MB 程序与 50 MB 异常填充，高度疑似木马，切勿下载）！</span>
       <a class="official-alert-link" href="/security/" data-locale-path="/security/" data-i18n="alert.cta">防伪公告与校验 →</a>
     </div>
+    <button class="official-alert-close" id="official-alert-close" type="button" aria-label="关闭公告" title="关闭公告" data-i18n-aria="alert.closeAria" data-i18n-title="alert.closeTitle">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 3.5l7 7m0-7l-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
   </div>
 
   <main id="top">

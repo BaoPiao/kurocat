@@ -54,6 +54,7 @@ const LOCALE_PAGES = [
       badge: 'ONLY OFFICIAL SITE',
       text: '<strong>kurocat.org</strong> is the ONLY official KuroCat website (<code>github.com/qianyiai/KuroCat</code>). ⚠️ WARNING: Impersonator <strong>kurocat.net</strong> distributes an unauthorized 64 MB <code>KuroCat.v5.1.0.zip</code> padded with 50 MiB junk &amp; a fake 36 MB binary — do NOT download or run it!',
       cta: 'Security Advisory →',
+      close: 'Dismiss notice',
     },
   },
   {
@@ -92,6 +93,7 @@ const LOCALE_PAGES = [
       badge: '唯一の公式サイト',
       text: '<strong>kurocat.org</strong> が KuroCat 唯一の公式サイトです（<code>github.com/qianyiai/KuroCat</code>）。⚠️ 偽サイト <strong>kurocat.net</strong> の 64 MB <code>KuroCat.v5.1.0.zip</code> は 50 MiB の異常パディングと非公式 36 MB 実行ファイルを含む危険な偽ビルドのため絶対に実行しないでください！',
       cta: '偽サイト警告・検証 →',
+      close: 'お知らせを閉じる',
     },
   },
   {
@@ -130,6 +132,7 @@ const LOCALE_PAGES = [
       badge: '유일한 공식 사이트',
       text: '<strong>kurocat.org</strong>는 KuroCat의 유일한 공식 사이트입니다 (<code>github.com/qianyiai/KuroCat</code>). ⚠️ 사칭 사이트 <strong>kurocat.net</strong>의 64 MB <code>KuroCat.v5.1.0.zip</code>에는 비공식 36 MB 실행 파일과 50 MiB 패딩이 포함되어 있어 악성코드 위험이 높으니 절대 실행하지 마세요!',
       cta: '보안 공지·검증 →',
+      close: '공지 닫기',
     },
   },
   {
@@ -168,6 +171,7 @@ const LOCALE_PAGES = [
       badge: 'ÚNICO SITIO OFICIAL',
       text: '<strong>kurocat.org</strong> es el ÚNICO sitio oficial de KuroCat (<code>github.com/qianyiai/KuroCat</code>). ⚠️ AVISO: El suplantador <strong>kurocat.net</strong> distribuye un <code>KuroCat.v5.1.0.zip</code> no autorizado de 64 MB con 50 MiB de relleno y un binario falso de 36 MB — ¡NO lo descargues ni ejecutes!',
       cta: 'Aviso de seguridad →',
+      close: 'Cerrar aviso',
     },
   },
   {
@@ -206,6 +210,7 @@ const LOCALE_PAGES = [
       badge: 'ÚNICO SITE OFICIAL',
       text: '<strong>kurocat.org</strong> é o ÚNICO site oficial do KuroCat (<code>github.com/qianyiai/KuroCat</code>). ⚠️ ALERTA: O impostor <strong>kurocat.net</strong> distribui um <code>KuroCat.v5.1.0.zip</code> não autorizado de 64 MB com 50 MiB de lixo e executável falso de 36 MB — NÃO baixe nem execute!',
       cta: 'Aviso de segurança →',
+      close: 'Fechar aviso',
     },
   },
   {
@@ -244,6 +249,7 @@ const LOCALE_PAGES = [
       badge: 'ЕДИНСТВЕННЫЙ ОФИЦИАЛЬНЫЙ САЙТ',
       text: '<strong>kurocat.org</strong> — ЕДИНСТВЕННЫЙ официальный сайт KuroCat (<code>github.com/qianyiai/KuroCat</code>). ⚠️ ОСТОРОЖНО: фейковый сайт <strong>kurocat.net</strong> раздаёт поддельный 64 МБ <code>KuroCat.v5.1.0.zip</code> с 50 МиБ мусора и неизвестным 36 МБ exe — НЕ скачивайте и НЕ запускайте его!',
       cta: 'Безопасность и проверка →',
+      close: 'Закрыть уведомление',
     },
   },
   {
@@ -282,6 +288,7 @@ const LOCALE_PAGES = [
       badge: 'EINZIGE OFFIZIELLE SEITE',
       text: '<strong>kurocat.org</strong> ist die EINZIGE offizielle KuroCat-Website (<code>github.com/qianyiai/KuroCat</code>). ⚠️ WARNUNG: Die Fake-Seite <strong>kurocat.net</strong> verbreitet ein nicht autorisiertes 64-MB-Archiv <code>KuroCat.v5.1.0.zip</code> mit 50 MiB Füll-Müll &amp; einer falschen 36-MB-EXE — NICHT herunterladen oder ausführen!',
       cta: 'Sicherheitshinweis →',
+      close: 'Hinweis schließen',
     },
   },
 ];
@@ -419,6 +426,10 @@ for (const loc of LOCALE_PAGES) {
   html = html.replace(
     /data-i18n="alert\.cta">[^<]*<\/a>/g,
     `data-i18n="alert.cta">${escapeAttr(loc.alert.cta)}</a>`
+  );
+  html = html.replace(
+    /aria-label="关闭公告" title="关闭公告"/g,
+    `aria-label="${escapeAttr(loc.alert.close)}" title="${escapeAttr(loc.alert.close)}"`
   );
   html = html.replace(/href="\/download\/"/g, `href="/${loc.code}/download/"`);
   html = html.replace(/href="\/vs\/bongo-cat\/"/g, `href="/${loc.code}/vs/bongo-cat/"`);

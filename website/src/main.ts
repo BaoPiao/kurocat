@@ -1566,6 +1566,52 @@ function initGrowthChart(): void {
   });
 }
 
+const OFFICIAL_ALERT_DISMISS_KEY = 'kurocat_official_alert_dismissed_v1';
+
+function initOfficialAlertBar(): void {
+  const bar = document.getElementById('official-alert-bar');
+  const closeBtn = document.getElementById('official-alert-close');
+  if (!bar || !closeBtn) return;
+
+  try {
+    if (localStorage.getItem(OFFICIAL_ALERT_DISMISS_KEY) === '1') {
+      document.documentElement.classList.add('official-alert-dismissed');
+      bar.hidden = true;
+      return;
+    }
+  } catch {
+    // Ignore storage errors in restricted contexts
+  }
+
+  closeBtn.addEventListener('click', () => {
+    try {
+      localStorage.setItem(OFFICIAL_ALERT_DISMISS_KEY, '1');
+    } catch {
+      // Ignore storage errors in restricted contexts
+    }
+
+    const prefersReduced =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) {
+      document.documentElement.classList.add('official-alert-dismissed');
+      bar.hidden = true;
+      return;
+    }
+
+    bar.style.maxHeight = `${bar.scrollHeight}px`;
+    requestAnimationFrame(() => {
+      bar.classList.add('is-closing');
+    });
+    window.setTimeout(() => {
+      document.documentElement.classList.add('official-alert-dismissed');
+      bar.hidden = true;
+    }, 230);
+  });
+}
+
+initOfficialAlertBar();
 applyReleaseUI(LOCAL_MIRROR_VERSION, buildDefaultAssets());
 initDownloadTracking();
 initPlayground();
