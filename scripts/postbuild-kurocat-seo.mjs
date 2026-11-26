@@ -402,13 +402,13 @@ All official downloads, documentation, and source code are published exclusively
 - [Author Homepage (Qianyi)](https://qianyi.one/): Author profile and projects.
 - [Full Technical Reference](https://kurocat.org/llms-full.txt): Complete architecture, platform support, AI companion hooks, MCP tools, and direct release URLs.
 
-## Supported Platforms (Latest: v5.1.2)
+## Supported Platforms (Latest: v5.1.3)
 
-- Windows 10 / 11 (x64 NSIS Installer, ~2.16 MB): \`https://kurocat.org/releases/v5.1.2/KuroCat-5.1.2-x64-setup.exe\`
-- Windows 7 SP1 (x64 Portable with offline WebView2 109): \`https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-win7-x64-portable.zip\`
-- macOS 10.15 Catalina+ (Apple Silicon M1–M4 & Intel Universal DMG): \`https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-macos-universal.dmg\` or \`brew install --cask qianyiai/tap/kurocat\`
+- Windows 10 / 11 (x64 NSIS Installer, ~2.40 MB): \`https://kurocat.org/releases/v5.1.3/KuroCat-5.1.3-x64-setup.exe\`
+- Windows 7 SP1 (x64 Portable with offline WebView2 109): \`https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x64-portable.zip\`
+- macOS 10.15 Catalina+ (Apple Silicon M1–M4 & Intel Universal DMG): \`https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-macos-universal.dmg\` or \`brew install --cask qianyiai/tap/kurocat\`
 - Linux (Ubuntu 22.04+, Debian 12+, KylinOS V11+ — x86_64 & ARM64 \`.deb\` / \`.AppImage\`): \`https://kurocat.org/#linux-download\`
-- Android APK: \`https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-android.apk\`
+- Android APK: \`https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-android.apk\`
 `;
 fs.writeFileSync(path.join(distDir, 'llms.txt'), llmsTxt, 'utf8');
 
@@ -434,18 +434,18 @@ Any third-party domain claiming to be an official site or mirror (including \`ku
 
 KuroCat is a lightweight, transparent, always-on-top desktop typing cat and AI coding companion built with **Tauri v2** and **Rust**. Designed as a modern, open-source, ultra-low-resource alternative to Bongo Cat, it reacts in real time to global keyboard, mouse, and AI coding assistant events without stealing window focus or slowing down games.
 
-## Core Features (v5.1.2)
+## Core Features (v5.1.3)
 
 - **3D Figurine & 2D Classic Dual Engine**: Instant switching between a 3D volumetric model (GPU-batched keycap atlas & vertex deformation, ~75% lower active GPU load, automatic 30 FPS game power-saving mode) and classic 2D hand-drawn art.
 - **7 Built-In Characters**: Classic Black Cat, Warm Milk-Tea Ragdoll, Orange Tabby, Calico, Tuxedo, Siamese, and BigFish (whale-girl with three-way mouse + typing + tail action and cursor gaze tracking).
 - **65% Compact & 108-Key Full-Size Keyboards**: Real key mapping including independent main Enter vs Numpad Enter, cat-facing (180°) and viewer-facing perspectives, plus customizable tail-key patting (Smart Third Hand, Custom Key Picker, Edge Keys, Wag Only).
 - **Independent Mouse L/R/M Highlights**: Distinct colors for Left, Right, and Middle/Scroll clicks, simultaneous dual-button press support, and optional floating key bubbles.
-- **Tactile & Emotional Interactions**: Head-petting with synthesized 24.5 Hz Web Audio purring, rapid-mouse curiosity eyes, sleep/wake-up anger reactions, and optional 3D collar bell & auto-gaming headphones.
-- **OS-Level Password Privacy Guard**: Automatically detects Windows and macOS password input fields so the cat gently closes its eyes (BigFish covers its eyes with both hands) while masking keycaps and key bubbles and never transmitting keystroke content.
+- **Tactile & Emotional Interactions**: Head-petting with real recorded cat purring & optional typing sound effects, Edge-Peek hiding, rapid-mouse curiosity eyes, sleep/wake-up anger reactions, and optional 3D collar bell & auto-gaming headphones.
+- **OS-Level Password Privacy Guard**: Automatically detects Windows, macOS, and Android password/fintech input fields so the cat gently closes its eyes (BigFish covers its eyes with both hands) while masking keycaps and key bubbles and never transmitting keystroke content.
 - **AI Coding Companion Integration**: Live emotional & typing feedback for Claude Code, Codex CLI, Cursor, Windsurf, DeepSeek, and Doubao via \`--hook\`, local HTTP \`/hook\` & \`/agent/event\`, and Streamable HTTP \`/mcp\` — synced to OBS transparent overlays.
-- **Built-In MCP Studio (10 Tools)**: Stdio and local Streamable HTTP (\`http://127.0.0.1:27420/mcp\`) server with zero Node.js/Python dependencies required; customize cat fur, 16-spot markings, 7 2D/3D face/ear/jaw contour parameters, and hot-reload in 0.4s.
-- **Native OBS Transparent Overlay**: Local \`http://127.0.0.1:27421/obs\` Browser Source with true Alpha transparency (no chroma key), optional OBS-Only mode, and synchronized privacy masking.
-- **Desktop Ergonomics**: 20%–150% smooth scaling, persistent click-through lock (\`Alt\` temporary drag), single-instance guard, anti-cheat pause/hide mode, and SHA-256 verified in-app auto-updater.
+- **Built-In MCP Studio (10 Tools)**: Stdio and local Streamable HTTP (\`http://127.0.0.1:27420/mcp\`) server with zero Node.js/Python dependencies required; customize cat fur, 16-spot markings, 22 2D/3D facial sculpting parameters (folded/floppy ears, heterochromia, blep, eyebrows), and hot-reload in 0.4s.
+- **Native OBS Transparent Overlay & KuroCat Live**: Local \`http://127.0.0.1:27421/obs\` Browser Source with true Alpha transparency (no chroma key), optional OBS-Only mode, synchronized privacy masking, plus dedicated \`KuroCat Live\` blue/green/magenta chroma capture window.
+- **Desktop Ergonomics**: 20%–100% pet opacity, 20%–150% smooth scaling, persistent click-through lock (\`Alt\` temporary drag), RDP topmost yielding, single-instance guard, anti-cheat pause/hide mode, and SHA-256 verified in-app auto-updater.
 
 ## Dedicated Multilingual Topic Hubs
 
@@ -454,19 +454,19 @@ Every topic hub is pre-rendered in Chinese (\`zh-CN\`), English (\`/en/\`), Japa
 - **KuroCat vs Bongo Cat Comparison**: https://kurocat.org/vs/bongo-cat/ · https://kurocat.org/en/vs/bongo-cat/ · https://kurocat.org/ja/vs/bongo-cat/ · https://kurocat.org/ko/vs/bongo-cat/
 - **OBS Zero Chroma-Key Overlay Guide**: https://kurocat.org/obs/ · https://kurocat.org/en/obs/ · https://kurocat.org/ja/obs/ · https://kurocat.org/ko/obs/
 - **MCP AI Cat Studio & Coding Companion**: https://kurocat.org/mcp/ · https://kurocat.org/en/mcp/ · https://kurocat.org/ja/mcp/ · https://kurocat.org/ko/mcp/
-- **Official Security Advisory (Fake \`kurocat.net\` Malware Warning)**: https://kurocat.org/security/ · https://kurocat.org/en/security/ · https://kurocat.org/ja/security/ · https://kurocat.org/ko/security/ — WARNING: \`kurocat.net\` is an unauthorized impersonation site distributing a padded 64.25 MB \`KuroCat.v5.1.0.zip\` (SHA-256 \`19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d\`) containing an unknown 35.92 MB executable plus 50 MiB of uncompressed junk padding (\`resources.pak\` / \`versions.dat\`). Official Windows 10/11 installers are only ~2.2 MB.
+- **Official Security Advisory (Fake \`kurocat.net\` Malware Warning)**: https://kurocat.org/security/ · https://kurocat.org/en/security/ · https://kurocat.org/ja/security/ · https://kurocat.org/ko/security/ — WARNING: \`kurocat.net\` is an unauthorized impersonation site distributing a padded 64.25 MB \`KuroCat.v5.1.0.zip\` (SHA-256 \`19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d\`) containing an unknown 35.92 MB executable plus 50 MiB of uncompressed junk padding (\`resources.pak\` / \`versions.dat\`). Official Windows 10/11 installers are only ~2.40 MB.
 
-## Direct Official Downloads (v5.1.2)
+## Direct Official Downloads (v5.1.3)
 
-- Windows 10/11 (x64 Installer): https://kurocat.org/releases/v5.1.2/KuroCat-5.1.2-x64-setup.exe
-- Windows 7 SP1 (x64 Portable w/ WebView2 109): https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-win7-x64-portable.zip
-- macOS 10.15+ Universal (Apple Silicon & Intel DMG): https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-macos-universal.dmg
+- Windows 10/11 (x64 Installer): https://kurocat.org/releases/v5.1.3/KuroCat-5.1.3-x64-setup.exe
+- Windows 7 SP1 (x64 Portable w/ WebView2 109): https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x64-portable.zip
+- macOS 10.15+ Universal (Apple Silicon & Intel DMG): https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-macos-universal.dmg
 - macOS Homebrew Cask: \`brew install --cask qianyiai/tap/kurocat\`
-- Linux x86_64 \`.deb\`: https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-linux-amd64.deb
-- Linux ARM64 \`.deb\`: https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-linux-arm64.deb
-- Linux x86_64 \`.AppImage\`: https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-linux-amd64.AppImage
-- Linux ARM64 \`.AppImage\`: https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-linux-arm64.AppImage
-- Android APK: https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-android.apk
+- Linux x86_64 \`.deb\`: https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-linux-amd64.deb
+- Linux ARM64 \`.deb\`: https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-linux-arm64.deb
+- Linux x86_64 \`.AppImage\`: https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-linux-amd64.AppImage
+- Linux ARM64 \`.AppImage\`: https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-linux-arm64.AppImage
+- Android APK: https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-android.apk
 - GitHub Releases (all platforms): https://github.com/qianyiai/kurocat/releases
 
 ## Localized Demo Media

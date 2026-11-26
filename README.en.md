@@ -37,7 +37,7 @@
 >
 > **The ONLY official website for KuroCat is [`https://kurocat.org/`](https://kurocat.org/en/)** and the only official repository is `github.com/qianyiai/kurocat`.
 >
-> An unaffiliated impersonation domain (**`kurocat.net`**) is distributing an unauthorized **`64.25 MB` `KuroCat.v5.1.0.zip`** (SHA-256: `19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d`) containing an unknown `35.92 MB KuroCat.exe` plus `50 MiB` of uncompressed padding (`bin/resources.pak` / `bin/versions.dat`) — a textbook scanner-evasion trojan/infostealer pattern. Official Windows 10/11 installers are only **`~2.2 MB`**. **Do NOT download or run anything from `kurocat.net`!** See our [**Official Security Advisory**](https://kurocat.org/en/security/) and [`SECURITY.md`](./SECURITY.md).
+> An unaffiliated impersonation domain (**`kurocat.net`**) is distributing an unauthorized **`64.25 MB` `KuroCat.v5.1.0.zip`** (SHA-256: `19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d`) containing an unknown `35.92 MB KuroCat.exe` plus `50 MiB` of uncompressed padding (`bin/resources.pak` / `bin/versions.dat`) — a textbook scanner-evasion trojan/infostealer pattern. Official Windows 10/11 installers are only **`~2.4 MB`**. **Do NOT download or run anything from `kurocat.net`!** See our [**Official Security Advisory**](https://kurocat.org/en/security/) and [`SECURITY.md`](./SECURITY.md).
 
 <br />
 
@@ -76,18 +76,18 @@
 
 <a id="download"></a>
 
-## 📥 Quick Download (`v5.1.2`)
+## 📥 Quick Download (`v5.1.3`)
 
-> ✨ **New in v5.1.2**: **AI Coding Companion hooks** (Claude Code, Codex, DeepSeek, Doubao, WorkBuddy, Cursor), **MCP 2D/3D face/ear sculpting (10 tools + 16 custom spots)**, and cross-platform single-instance lock. See full notes in [Releases](https://github.com/qianyiai/kurocat/releases).
+> ✨ **New in v5.1.3**: **20%–100% pet opacity** across all platforms, **KuroCat Live chroma-key capture window**, **22-field 2D/3D/MCP facial sculpting**, **real cat purr & typing sounds**, **Edge-Peek & new idle/petting animations**, **Android v5.1.3 feature parity**, plus major fixes for Win admin restart, dragging, fintech password guard, RDP topmost yielding, macOS keyboard monitoring, and viewer-mode mouse orientation (#98, #80, #87, #40, #63, #92). See full notes in [Releases](https://github.com/qianyiai/kurocat/releases).
 
 | Platform | Recommended Build | Size | Download |
 | --- | --- | :---: | --- |
-| **🪟 Windows 10 / 11** | x64 Installer (built-in 65% & 108-key) | 2.15 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-5.1.2-x64-setup.exe) · [**Fast CDN**](https://kurocat.org/en/#download) |
-| **🍎 macOS 10.15+** | Apple Silicon (M1–M4) & Intel Universal DMG | 5.93 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-macos-universal.dmg) · [**Fast CDN**](https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-macos-universal.dmg) |
-| **🐧 Linux (x86_64)** | Ubuntu 22.04+ / Debian 12+ / KylinOS V11+ | 2.38 MB | [**`.deb`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-linux-amd64.deb) · [**`.AppImage`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-linux-amd64.AppImage) · [**Fast CDN**](https://kurocat.org/en/#linux-download) |
-| **🐧 Linux (ARM64)** | ARM64 / Raspberry Pi / KylinOS V11+ | 2.34 MB | [**`.deb`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-linux-arm64.deb) · [**`.AppImage`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-linux-arm64.AppImage) · [**Fast CDN**](https://kurocat.org/en/#linux-download) |
-| **🖥️ Windows 7 SP1** | x64 Portable (bundled offline WebView2 109) | 178.94 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-win7-x64-portable.zip) · [**Fast CDN**](https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-win7-x64-portable.zip) |
-| **🤖 Android** | Android APK | 5.05 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-android.apk) · [**Fast CDN**](https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-android.apk) |
+| **🪟 Windows 10 / 11** | x64 Installer (built-in 65% & 108-key) | 2.40 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-5.1.3-x64-setup.exe) · [**Fast CDN**](https://kurocat.org/en/#download) |
+| **🍎 macOS 10.15+** | Apple Silicon (M1–M4) & Intel Universal DMG | 6.57 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-macos-universal.dmg) · [**Fast CDN**](https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-macos-universal.dmg) |
+| **🐧 Linux (x86_64)** | Ubuntu 22.04+ / Debian 12+ / KylinOS V11+ | 2.66 MB | [**`.deb`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-linux-amd64.deb) · [**`.AppImage`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-linux-amd64.AppImage) · [**Fast CDN**](https://kurocat.org/en/#linux-download) |
+| **🐧 Linux (ARM64)** | ARM64 / Raspberry Pi / KylinOS V11+ | 2.62 MB | [**`.deb`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-linux-arm64.deb) · [**`.AppImage`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-linux-arm64.AppImage) · [**Fast CDN**](https://kurocat.org/en/#linux-download) |
+| **🖥️ Windows 7 SP1** | x64 Portable (bundled offline WebView2 109) | 179.3 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-win7-x64-portable.zip) · [**Fast CDN**](https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x64-portable.zip) |
+| **🤖 Android** | Android APK | 5.17 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-android.apk) · [**Fast CDN**](https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-android.apk) |
 
 **🍺 macOS Homebrew One-Line Install** (recommended — clears quarantine automatically, no manual `xattr`):
 

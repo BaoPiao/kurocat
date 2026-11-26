@@ -2,8 +2,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export const RELEASE_VERSION = 'v5.1.2';
-export const RELEASE_VER_NUM = '5.1.2';
+export const RELEASE_VERSION = 'v5.1.3';
+export const RELEASE_VER_NUM = '5.1.3';
 
 export const VERIFIED_ASSETS = [
   {
@@ -15,9 +15,9 @@ export const VERIFIED_ASSETS = [
       ja: '推奨インストーラー · 65%/108 キー切替＆自動更新内蔵',
       ko: '권장 설치판 · 65%/108키 전환 및 앱 내 자동 업데이트 내장',
     },
-    file: 'KuroCat-5.1.2-x64-setup.exe',
-    size: '2.23 MB',
-    sha256: '122402d52007edc57b6a43c7a6d2e0943036a762f3c4845813bca4af49dd0d29',
+    file: 'KuroCat-5.1.3-x64-setup.exe',
+    size: '2.40 MB',
+    sha256: 'aea87e3e7ee0cc8deaafcac2ed9d69c0587d41797f441a2f842724a4e1bb47df',
   },
   {
     key: 'macos',
@@ -28,9 +28,9 @@ export const VERIFIED_ASSETS = [
       ja: 'Universal DMG · Homebrew 1 行インストール対応',
       ko: '유니버설 DMG · Homebrew 한 줄 설치 지원',
     },
-    file: 'KuroCat-v5.1.2-macos-universal.dmg',
-    size: '6.17 MB',
-    sha256: '33e168a107f3ece2ee60d99289361232fa9d7270ed41a577b4dbb13a8275d9ea',
+    file: 'KuroCat-v5.1.3-macos-universal.dmg',
+    size: '6.57 MB',
+    sha256: '2e42bb1f2701725a93b1e074bbb6694b6471821a78c341e0e8b216efcec545a9',
   },
   {
     key: 'win7',
@@ -41,9 +41,9 @@ export const VERIFIED_ASSETS = [
       ja: 'オフライン WebView2 109 同梱 · Aero 不要の透過描画',
       ko: '오프라인 WebView2 109 내장 · Aero 없이도 완벽한 투명 렌더링',
     },
-    file: 'KuroCat-v5.1.2-win7-x64-portable.zip',
-    size: '179.08 MB',
-    sha256: '5805c79717b49cd75040dd625308367e738a1987b2ab3c8a728e6d2e037399a9',
+    file: 'KuroCat-v5.1.3-win7-x64-portable.zip',
+    size: '179.3 MB',
+    sha256: 'af9848ad0d108cd6e97f735f883e0eee7e8326fa298137de7e2d75832ca295f2',
   },
   {
     key: 'linux-x64-deb',
@@ -54,9 +54,9 @@ export const VERIFIED_ASSETS = [
       ja: 'Ubuntu 22.04+ / Debian 12+ / KylinOS V11+ (glibc >= 2.34)',
       ko: 'Ubuntu 22.04+ / Debian 12+ / KylinOS V11+ (glibc >= 2.34)',
     },
-    file: 'KuroCat-v5.1.2-linux-amd64.deb',
-    size: '2.48 MB',
-    sha256: 'bf36af5507cbeef41c832b612278c0dfb693a7d7de6b7b6c660e2dac39fbd25b',
+    file: 'KuroCat-v5.1.3-linux-amd64.deb',
+    size: '2.66 MB',
+    sha256: '715eff451685e977a444e70fd8032e7599facfeb86c7a47c3764332d4dd4979f',
   },
   {
     key: 'linux-arm64-deb',
@@ -67,9 +67,9 @@ export const VERIFIED_ASSETS = [
       ja: 'ARM64 / Raspberry Pi 向け .deb パッケージ',
       ko: 'ARM64 / 라즈베리 파이용 .deb 패키지',
     },
-    file: 'KuroCat-v5.1.2-linux-arm64.deb',
-    size: '2.44 MB',
-    sha256: '1ce967a5b0ceda369627f4cc4def417e95f1209d17d747351aa0cfbbfa9aede9',
+    file: 'KuroCat-v5.1.3-linux-arm64.deb',
+    size: '2.62 MB',
+    sha256: '148b2cf1dd09785a2d4f5e5739ff2f0d2279b4bb89010d30ebe9c296d1a43a37',
   },
   {
     key: 'linux-x64-appimage',
@@ -80,9 +80,9 @@ export const VERIFIED_ASSETS = [
       ja: 'インストール不要ポータブル版 · chmod +x で即起動',
       ko: '무설치 포터블 버전 · chmod +x 후 바로 실행',
     },
-    file: 'KuroCat-v5.1.2-linux-amd64.AppImage',
-    size: '77.61 MB',
-    sha256: '0f48dd4bf47a3aca19b0d3a76382f72061ffc231c3e33205f4ea0f5d7daf79b7',
+    file: 'KuroCat-v5.1.3-linux-amd64.AppImage',
+    size: '77.8 MB',
+    sha256: '629051627c86415dd3ce1fbd530323cff4779cbb3ed9b0ab9797dab14cf3339d',
   },
   {
     key: 'linux-arm64-appimage',
@@ -93,9 +93,9 @@ export const VERIFIED_ASSETS = [
       ja: 'ARM64 向けポータブル版',
       ko: 'ARM64 포터블 AppImage',
     },
-    file: 'KuroCat-v5.1.2-linux-arm64.AppImage',
-    size: '75.78 MB',
-    sha256: '578530bcbf22fd85aec2d139b24616aac10665090d4a1489652649faa34e38bf',
+    file: 'KuroCat-v5.1.3-linux-arm64.AppImage',
+    size: '76.0 MB',
+    sha256: '7e858187316608c619d4a783435b74163c094daedbaf8e321afc7090b346e072',
   },
   {
     key: 'android',
@@ -106,9 +106,9 @@ export const VERIFIED_ASSETS = [
       ja: '公式 Android APK ビルド',
       ko: '공식 Android APK 빌드',
     },
-    file: 'KuroCat-v5.1.2-android.apk',
-    size: '5.05 MB',
-    sha256: '153c57ec417a46bee584eb5ca104edc4760b44f490cb015274fc0e534ca0424c',
+    file: 'KuroCat-v5.1.3-android.apk',
+    size: '5.17 MB',
+    sha256: '87594264749c3a637b8b1f64aa7adee7e4712e7703fffddfc493be2fd005ab43',
   },
 ];
 
@@ -642,7 +642,7 @@ function buildDownloadPage(locale, today) {
       faqs: [
         { q: 'Where is the only official place to download KuroCat?', a: 'Only https://kurocat.org/download/, https://github.com/qianyiai/kurocat/releases, and Homebrew Tap qianyiai/homebrew-tap are official. Unaffiliated mirror sites like kurocat.net are not maintained by the author.' },
         { q: 'Does KuroCat support macOS Apple Silicon (M1–M4) and Linux?', a: 'Yes. The macOS Universal DMG natively supports M1/M2/M3/M4 and Intel Macs (macOS 10.15+). Linux supports x86_64 and ARM64 via .deb and portable .AppImage (glibc >= 2.34).' },
-        { q: 'Why is the Windows installer only 2.23 MB?', a: 'KuroCat is built with Tauri v2 and Rust, reusing the OS native WebView2 instead of bundling a 150 MB Chromium binary like Electron apps.' },
+        { q: 'Why is the Windows installer only 2.40 MB?', a: 'KuroCat is built with Tauri v2 and Rust, reusing the OS native WebView2 instead of bundling a 150 MB Chromium binary like Electron apps.' },
       ],
     },
     ja: {
@@ -690,7 +690,7 @@ function buildDownloadPage(locale, today) {
       macTipBody: '응용 프로그램으로 복사한 뒤 개발자 확인 불가 알림이 뜨면 아래 명령어를 터미널에서 한 번 실행하고, 시스템 설정 → 개인정보 보호 및 보안에서 손쉬운 사용과 입력 모니터링을 허용하세요.',
       faqs: [
         { q: 'KuroCat의 공식 다운로드 경로는 어디인가요?', a: 'https://kurocat.org/ko/download/, https://github.com/qianyiai/kurocat/releases, 그리고 Homebrew Tap(qianyiai/homebrew-tap)만 공식입니다. kurocat.net 등 제3자 사이트는 비공식입니다.' },
-        { q: '설치 파일 용량이 왜 이렇게 가볍나요?', a: 'Electron 대신 Tauri v2 + Rust로 제작해 시스템 내장 WebView를 활용하므로 Windows 설치 파일이 2.23 MB에 불과합니다.' },
+        { q: '설치 파일 용량이 왜 이렇게 가볍나요?', a: 'Electron 대신 Tauri v2 + Rust로 제작해 시스템 내장 WebView를 활용하므로 Windows 설치 파일이 2.40 MB에 불과합니다.' },
       ],
     },
   }[locale];
@@ -776,7 +776,7 @@ function buildVsBongoCatPage(locale, today) {
   const copy = {
     zh: {
       title: 'KuroCat vs Bongo Cat — 为什么 KuroCat 是 2026 最好的免费开源 3D Bongo Cat 替代品',
-      description: '全面对比 KuroCat 与传统 Bongo Cat / Steam Bongo Cat：MIT 开源免费、3D 手办与 2D 经典双引擎、2.2 MB Rust 轻量体积、原生 macOS/Linux/Win7、输密码自动闭眼防偷窥、OBS 免绿幕透明源与 AI MCP 捏脸。',
+      description: '全面对比 KuroCat 与传统 Bongo Cat / Steam Bongo Cat：MIT 开源免费、3D 手办与 2D 经典双引擎、2.4 MB Rust 轻量体积、原生 macOS/Linux/Win7、输密码自动闭眼防偷窥、OBS 免绿幕透明源与 AI MCP 捏脸。',
       eyebrow: 'Comparison · Open-Source Bongo Cat Alternative',
       h1: 'KuroCat vs Bongo Cat：全维度对比',
       lead: '如果你在找一款支持 3D 立体手办、原生支持 macOS / Linux / Win7、打密码自动闭眼、直播免绿幕抠像，而且完全免费开源的 Bongo Cat 替代品，下表一目了然。',
@@ -788,7 +788,7 @@ function buildVsBongoCatPage(locale, today) {
       rows: [
         ['开源协议与价格', '<span class="badge-yes">100% 免费 · MIT 开源（零内购/零广告）</span>', '<span class="badge-mid">闭源或社区旧改版（部分含内购/抽箱）</span>'],
         ['3D 立体 / 2D 双引擎', '<span class="badge-yes">一键切换 3D 立体手办 + 2D 经典（支持 360° 旋转）</span>', '<span class="badge-no">仅 2D 平面贴图</span>'],
-        ['安装包与性能占用', '<span class="badge-yes">Tauri v2 + Rust 仅 2.23 MB · 游戏自动 30 FPS 省电</span>', '<span class="badge-mid">通常 60–180 MB，部分版本空闲仍占 GPU</span>'],
+        ['安装包与性能占用', '<span class="badge-yes">Tauri v2 + Rust 仅 2.40 MB · 游戏自动 30 FPS 省电</span>', '<span class="badge-mid">通常 60–180 MB，部分版本空闲仍占 GPU</span>'],
         ['跨平台支持', '<span class="badge-yes">Win11/10/7 + macOS (M1–M4/Intel/Homebrew) + Linux + Android</span>', '<span class="badge-no">大多仅限 Windows（Mac/Linux 兼容差）</span>'],
         ['键盘与鼠标精度', '<span class="badge-yes">65% / 108 键全尺寸 + 双视角 + 左右中键独立分色 + 尾巴拍键</span>', '<span class="badge-mid">固定单键位或简单左右拍动</span>'],
         ['输密码防偷窥', '<span class="badge-yes">系统级自动识别密码框：自动闭眼/捂眼并遮蔽键帽</span>', '<span class="badge-no">不支持（直播输密码易泄露节奏/键位）</span>'],
@@ -798,18 +798,18 @@ function buildVsBongoCatPage(locale, today) {
       whyTitle: '三大杀手级体验差异',
       cards: [
         ['🙈 直播和办公不再怕社死', 'KuroCat 在 Windows 与 macOS 底层自动检测密码输入框，聚焦密码栏瞬间猫咪乖巧闭眼、停止外传按键气泡，OBS 直播源同步隐藏。'],
-        ['⚡ 2.2 MB Rust 内核，不卡 3A 与竞技网游', '3D 键帽图集合批渲染，检测到全屏游戏自动切换 30 FPS 省电模式，并支持托盘一键「反作弊护航暂停钩子」。'],
+        ['⚡ 2.4 MB Rust 内核，不卡 3A 与竞技网游', '3D 键帽图集合批渲染，检测到全屏游戏自动切换 30 FPS 省电模式，并支持托盘一键「反作弊护航暂停钩子」。'],
         ['🎨 发照片让 AI 0.4 秒捏出你家毛孩子', '内置免依赖 MCP 服务，直接支持 5 种脸型、7 种耳型（含折耳/垂耳）、5 种瞳孔、异瞳、吐舌与自定义斑点。'],
       ],
       faqs: [
-        { q: 'KuroCat 和 Bongo Cat 相比有哪些核心优势？', a: 'KuroCat 是 MIT 完全免费开源的现代化替代方案，支持 3D/2D 双引擎切换、Win/Mac/Linux/Android 全平台、密码防偷窥、免绿幕 OBS 透明源以及内置 AI MCP 捏脸，安装包仅 2.23 MB。' },
+        { q: 'KuroCat 和 Bongo Cat 相比有哪些核心优势？', a: 'KuroCat 是 MIT 完全免费开源的现代化替代方案，支持 3D/2D 双引擎切换、Win/Mac/Linux/Android 全平台、密码防偷窥、免绿幕 OBS 透明源以及内置 AI MCP 捏脸，安装包仅 2.40 MB。' },
         { q: 'Mac (M1/M2/M3/M4) 上有能用的 Bongo Cat 吗？', a: '有，KuroCat 原生提供 Apple Silicon + Intel 通用版，支持一行命令 brew install --cask qianyiai/tap/kurocat 安装，并完整兼容 macOS 休眠唤醒与 Karabiner-Elements。' },
         { q: '打瓦/三角洲等强反作弊游戏安全吗？', a: 'KuroCat 仅在本地监听键鼠动作（零网络上传按键内容），且托盘提供一键「暂停监听并隐藏（游戏反作弊护航）」，玩强内核反作弊网游前点一下即可彻底卸载钩子。' },
       ],
     },
     en: {
       title: 'KuroCat vs Bongo Cat — Best Free Open-Source 3D Bongo Cat Alternative (Win/Mac/Linux)',
-      description: 'Compare KuroCat with classic Bongo Cat and Steam Bongo Cat: MIT open-source, 3D figurine + 2D dual engine, 2.23 MB Rust/Tauri build, native macOS (Homebrew) & Linux, OS password privacy guard, zero chroma-key OBS overlay, and MCP AI pet studio.',
+      description: 'Compare KuroCat with classic Bongo Cat and Steam Bongo Cat: MIT open-source, 3D figurine + 2D dual engine, 2.40 MB Rust/Tauri build, native macOS (Homebrew) & Linux, OS password privacy guard, zero chroma-key OBS overlay, and MCP AI pet studio.',
       eyebrow: 'Comparison · Free Open-Source Bongo Cat Alternative',
       h1: 'KuroCat vs Bongo Cat: Full Feature Comparison',
       lead: 'Looking for a modern, lightweight, open-source Bongo Cat alternative that works natively on Windows, macOS (M1–M4), and Linux — with 3D rendering, password privacy, and OBS alpha transparency?',
@@ -821,7 +821,7 @@ function buildVsBongoCatPage(locale, today) {
       rows: [
         ['License & Pricing', '<span class="badge-yes">100% Free · MIT Open Source (No IAP / Ads)</span>', '<span class="badge-mid">Closed-source or legacy forks (some with loot/IAP)</span>'],
         ['3D + 2D Dual Engine', '<span class="badge-yes">Instant 3D Figurine + 2D Classic switch + 360° orbit</span>', '<span class="badge-no">2D static sprites only</span>'],
-        ['Size & Efficiency', '<span class="badge-yes">2.23 MB Tauri v2 + Rust · auto 30 FPS game eco mode</span>', '<span class="badge-mid">60–180 MB; higher idle GPU/CPU on many clones</span>'],
+        ['Size & Efficiency', '<span class="badge-yes">2.40 MB Tauri v2 + Rust · auto 30 FPS game eco mode</span>', '<span class="badge-mid">60–180 MB; higher idle GPU/CPU on many clones</span>'],
         ['Cross-Platform', '<span class="badge-yes">Win 11/10/7 · macOS (M1–M4/Intel/Homebrew) · Linux · Android</span>', '<span class="badge-no">Mostly Windows-only</span>'],
         ['Keyboard & Mouse', '<span class="badge-yes">65% / 108-key + Cat/Viewer view + L/R/M mouse + tail-key slaps</span>', '<span class="badge-mid">Fixed key overlay or basic 2-paw tap</span>'],
         ['Password Privacy Guard', '<span class="badge-yes">OS-level detection auto-closes eyes & masks keys</span>', '<span class="badge-no">Not supported</span>'],
@@ -831,7 +831,7 @@ function buildVsBongoCatPage(locale, today) {
       whyTitle: 'Why Streamers, Coders & Gamers Switch to KuroCat',
       cards: [
         ['🙈 Automatic Password Privacy', 'On Windows and macOS, focusing any password field automatically makes KuroCat close its eyes and hide all keycap indicators — even inside OBS streams.'],
-        ['⚡ Ultra-Light 2.23 MB Rust Core', 'GPU-batched 3D keycap atlas cuts active GPU usage by ~75%, drops to 30 FPS automatically during games, and includes a one-click Anti-Cheat Safe Pause in the tray.'],
+        ['⚡ Ultra-Light 2.40 MB Rust Core', 'GPU-batched 3D keycap atlas cuts active GPU usage by ~75%, drops to 30 FPS automatically during games, and includes a one-click Anti-Cheat Safe Pause in the tray.'],
         ['🎨 Built-in MCP AI Pet Studio', 'Customize 5 face shapes, 7 ear shapes (including Scottish Fold & floppy ears), 5 pupil styles, heterochromia odd eyes, blep tongue, and spots in 0.4s via Claude or Cursor.'],
       ],
       faqs: [
@@ -842,7 +842,7 @@ function buildVsBongoCatPage(locale, today) {
     },
     ja: {
       title: 'KuroCat vs Bongo Cat — 無料オープンソース 3D Bongo Cat 代替アプリ徹底比較',
-      description: 'KuroCat と従来の Bongo Cat を徹底比較：MIT オープンソース無料、3D/2D デュアルエンジン、2.23 MB 軽量 Rust 実装、macOS (M1–M4/Homebrew)＆Linux 対応、パスワード自動目隠し、クロマキー不要 OBS 透過ソース、MCP AI カスタム。',
+      description: 'KuroCat と従来の Bongo Cat を徹底比較：MIT オープンソース無料、3D/2D デュアルエンジン、2.40 MB 軽量 Rust 実装、macOS (M1–M4/Homebrew)＆Linux 対応、パスワード自動目隠し、クロマキー不要 OBS 透過ソース、MCP AI カスタム。',
       eyebrow: 'Comparison · Bongo Cat 代替アプリ比較',
       h1: 'KuroCat vs Bongo Cat 徹底比較',
       lead: '3D 表示・Mac / Linux 対応・パスワード保護・クロマキー不要の OBS 透過配信をすべて無料で備えた、Bongo Cat のモダンなオープンソース代替です。',
@@ -854,7 +854,7 @@ function buildVsBongoCatPage(locale, today) {
       rows: [
         ['ライセンス・料金', '<span class="badge-yes">完全無料 · MIT オープンソース（広告・課金ゼロ）</span>', '<span class="badge-mid">クローズドソースや一部課金あり</span>'],
         ['3D / 2D デュアル切替', '<span class="badge-yes">3D フィギュア ⇄ 2D クラシック即切替（360° 回転可）</span>', '<span class="badge-no">2D のみ</span>'],
-        ['容量と軽さ', '<span class="badge-yes">2.23 MB (Tauri v2 + Rust) · ゲーム時 30 FPS 省電力</span>', '<span class="badge-mid">60〜180 MB クラスが多い</span>'],
+        ['容量と軽さ', '<span class="badge-yes">2.40 MB (Tauri v2 + Rust) · ゲーム時 30 FPS 省電力</span>', '<span class="badge-mid">60〜180 MB クラスが多い</span>'],
         ['対応 OS', '<span class="badge-yes">Win11/10/7 · macOS (M1–M4/Homebrew) · Linux · Android</span>', '<span class="badge-no">多くが Windows のみ</span>'],
         ['パスワード自動保護', '<span class="badge-yes">OS 検知で自動目閉じ＆キー非表示（OBS 連動）</span>', '<span class="badge-no">非対応</span>'],
         ['OBS 透過ソース', '<span class="badge-yes">内蔵ブラウザソース（クロマキー不要・OBS 専用表示）</span>', '<span class="badge-mid">グリーンバック合成が必要</span>'],
@@ -873,7 +873,7 @@ function buildVsBongoCatPage(locale, today) {
     },
     ko: {
       title: 'KuroCat vs Bongo Cat — 무료 오픈소스 3D Bongo Cat 대안 완벽 비교',
-      description: 'KuroCat과 기존 Bongo Cat 전격 비교: MIT 무료 오픈소스, 3D/2D 듀얼 엔진, 2.23 MB 초경량 Rust 빌드, macOS(Homebrew)·Linux 지원, 비밀번호 자동 눈 가리기, 크로마키 없는 OBS 투명 소스, AI MCP 커스텀.',
+      description: 'KuroCat과 기존 Bongo Cat 전격 비교: MIT 무료 오픈소스, 3D/2D 듀얼 엔진, 2.40 MB 초경량 Rust 빌드, macOS(Homebrew)·Linux 지원, 비밀번호 자동 눈 가리기, 크로마키 없는 OBS 투명 소스, AI MCP 커스텀.',
       eyebrow: 'Comparison · 무료 오픈소스 Bongo Cat 대안',
       h1: 'KuroCat vs Bongo Cat 핵심 기능 비교',
       lead: '3D 피규어 모드, macOS/Linux 기본 지원, 비밀번호 자동 눈 가리기, 크로마키 없는 OBS 투명 방송까지 모두 무료 오픈소스로 제공하는 차세대 Bongo Cat 대안입니다.',
@@ -885,7 +885,7 @@ function buildVsBongoCatPage(locale, today) {
       rows: [
         ['라이선스 및 가격', '<span class="badge-yes">100% 무료 · MIT 오픈소스 (광고/결제 없음)</span>', '<span class="badge-mid">비공개 소스 또는 일부 유료/뽑기 요소</span>'],
         ['3D + 2D 듀얼 엔진', '<span class="badge-yes">3D 피규어 ⇄ 2D 클래식 원클릭 전환 (360° 회전)</span>', '<span class="badge-no">2D 평면만 지원</span>'],
-        ['용량 및 리소스', '<span class="badge-yes">2.23 MB (Tauri v2 + Rust) · 게임 시 자동 30 FPS 절전</span>', '<span class="badge-mid">60~180 MB, 일부 클론은 유휴 시에도 높은 GPU 점유</span>'],
+        ['용량 및 리소스', '<span class="badge-yes">2.40 MB (Tauri v2 + Rust) · 게임 시 자동 30 FPS 절전</span>', '<span class="badge-mid">60~180 MB, 일부 클론은 유휴 시에도 높은 GPU 점유</span>'],
         ['크로스 플랫폼', '<span class="badge-yes">Win 11/10/7 · macOS (M1–M4/Homebrew) · Linux · Android</span>', '<span class="badge-no">대부분 Windows 전용</span>'],
         ['비밀번호 눈 가리기', '<span class="badge-yes">OS 레벨 자동 감지로 눈 가리기 & 키 숨김</span>', '<span class="badge-no">미지원</span>'],
         ['OBS 투명 오버레이', '<span class="badge-yes">로컬 알파 투명 브라우저 소스 기본 내장 (크로마키 불필요)</span>', '<span class="badge-mid">그린스크린 크로마키 필요</span>'],
@@ -1272,8 +1272,8 @@ function buildSecurityPage(locale, today) {
       cols: ['比对项', '正版官方（kurocat.org / GitHub）', '高危假冒站（kurocat.net）'],
       rows: [
         ['官方状态', '✅ 唯一官方网站与原作者仓库', '❌ 仿冒站点，与作者完全无关'],
-        ['Windows 10/11 主文件', 'KuroCat-5.1.2-x64-setup.exe（v5.1.0 为 2.16 MB .exe）', 'KuroCat.v5.1.0.zip（官方从未发布过此 ZIP！）'],
-        ['安装包体积', '2.23 MB（原生 Rust + Tauri v2）', '64.25 MB（67,371,456 字节，异常膨胀近 30 倍）'],
+        ['Windows 10/11 主文件', 'KuroCat-5.1.3-x64-setup.exe（v5.1.0 为 2.16 MB .exe）', 'KuroCat.v5.1.0.zip（官方从未发布过此 ZIP！）'],
+        ['安装包体积', '2.40 MB（原生 Rust + Tauri v2）', '64.25 MB（67,371,456 字节，异常膨胀近 30 倍）'],
         ['内部可执行文件', '单一原生 Rust 二进制（约 5–6 MB）', '非官方 35.92 MB KuroCat.exe（CRC32: 0e67ba17）'],
         ['异常填充文件（反查杀特征）', '无任何 .pak / .dat 填充文件', 'bin/resources.pak（精确 48.00 MiB 未压缩）+ bin/versions.dat（精确 2.00 MiB 未压缩），典型绕过杀软/沙箱体积限制的木马手法'],
         ['可疑包 SHA-256（切勿运行）', '详见 /download/ 逐一公开校验表', '19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d'],
@@ -1288,8 +1288,8 @@ function buildSecurityPage(locale, today) {
       ],
       faqs: [
         { q: 'kurocat.net 是 KuroCat 的官网或安全镜像吗？', a: '不是！kurocat.net 与作者谦一（@qianyiai）没有任何关系，且正在分发含 50 MiB 异常填充与非官方 35.92 MB exe 的 64.25 MB 可疑压缩包。KuroCat 唯一官网为 https://kurocat.org/。' },
-        { q: '为什么正版 Windows 安装包只有 2.2 MB，而假包高达 64 MB？', a: '正版 KuroCat 采用 Rust + Tauri v2 复用系统 WebView2，因此安装包仅 2.23 MB。假冒包强行塞入精确 48 MiB 的 resources.pak 与 2 MiB 的 versions.dat（未压缩 STORED），这是恶意软件绕过部分安全扫描器文件大小上限的典型手法。' },
-        { q: '如何用一条命令确认我下载的是正版 KuroCat？', a: '在 PowerShell 运行 Get-FileHash KuroCat-5.1.2-x64-setup.exe -Algorithm SHA256，确认输出与 https://kurocat.org/download/ 及 GitHub Releases 公布的 64 位哈希完全一致即可。' },
+        { q: '为什么正版 Windows 安装包只有 2.4 MB，而假包高达 64 MB？', a: '正版 KuroCat 采用 Rust + Tauri v2 复用系统 WebView2，因此安装包仅 2.40 MB。假冒包强行塞入精确 48 MiB 的 resources.pak 与 2 MiB 的 versions.dat（未压缩 STORED），这是恶意软件绕过部分安全扫描器文件大小上限的典型手法。' },
+        { q: '如何用一条命令确认我下载的是正版 KuroCat？', a: '在 PowerShell 运行 Get-FileHash KuroCat-5.1.3-x64-setup.exe -Algorithm SHA256，确认输出与 https://kurocat.org/download/ 及 GitHub Releases 公布的 64 位哈希完全一致即可。' },
       ],
     },
     en: {
@@ -1310,8 +1310,8 @@ function buildSecurityPage(locale, today) {
       cols: ['Attribute', 'Official KuroCat (kurocat.org / GitHub)', 'Impersonator (kurocat.net)'],
       rows: [
         ['Official Affiliation', '✅ Exclusive official website & repo', '❌ Unaffiliated impersonation site'],
-        ['Windows 10/11 Package', 'KuroCat-5.1.2-x64-setup.exe (v5.1.0 was 2.16 MB .exe)', 'KuroCat.v5.1.0.zip (never published by KuroCat!)'],
-        ['Download Size', '2.23 MB (native Rust + Tauri v2)', '64.25 MB (67,371,456 bytes — ~30x bloated)'],
+        ['Windows 10/11 Package', 'KuroCat-5.1.3-x64-setup.exe (v5.1.0 was 2.16 MB .exe)', 'KuroCat.v5.1.0.zip (never published by KuroCat!)'],
+        ['Download Size', '2.40 MB (native Rust + Tauri v2)', '64.25 MB (67,371,456 bytes — ~30x bloated)'],
         ['Executable Binary', 'Native Rust binary (~5–6 MB unpacked)', 'Unauthorized 35.92 MB KuroCat.exe (CRC32: 0e67ba17)'],
         ['Evasion Padding', 'Zero .pak / .dat junk files', 'bin/resources.pak (exact 48.00 MiB STORED) + bin/versions.dat (exact 2.00 MiB STORED) — textbook AV/sandbox size-limit evasion'],
         ['Suspicious ZIP SHA-256', 'All official hashes published at /en/download/', '19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d'],
@@ -1326,7 +1326,7 @@ function buildSecurityPage(locale, today) {
       ],
       faqs: [
         { q: 'Is kurocat.net official or safe to download from?', a: 'No. kurocat.net is completely unaffiliated with KuroCat and distributes an unauthorized 64.25 MB ZIP padded with 50 MiB of uncompressed junk and an unknown 35.92 MB executable. Use only https://kurocat.org/ or https://github.com/qianyiai/kurocat.' },
-        { q: 'Why does the fake ZIP include a 48 MiB resources.pak and 2 MiB versions.dat?', a: 'Official KuroCat has no such files and weighs only ~2.2 MB. Padding an archive past 64 MB with uncompressed data is a well-known malware/infostealer technique to evade cloud AV upload and sandbox size thresholds.' },
+        { q: 'Why does the fake ZIP include a 48 MiB resources.pak and 2 MiB versions.dat?', a: 'Official KuroCat has no such files and weighs only ~2.4 MB. Padding an archive past 64 MB with uncompressed data is a well-known malware/infostealer technique to evade cloud AV upload and sandbox size thresholds.' },
       ],
     },
     ja: {
@@ -1347,8 +1347,8 @@ function buildSecurityPage(locale, today) {
       cols: ['項目', '公式 KuroCat（kurocat.org / GitHub）', '偽サイト（kurocat.net）'],
       rows: [
         ['公式関係', '✅ 唯一の公式サイト・作者リポジトリ', '❌ 作者と完全に無関係な偽サイト'],
-        ['Windows 10/11 ファイル', 'KuroCat-5.1.2-x64-setup.exe（約 2.23 MB）', 'KuroCat.v5.1.0.zip（公式には存在しない）'],
-        ['容量と中身', '2.23 MB の正規 Rust インストーラー', '64.25 MB（不明な 35.92 MB exe ＋ 正確に 48 MiB の resources.pak ＋ 2 MiB の versions.dat）'],
+        ['Windows 10/11 ファイル', 'KuroCat-5.1.3-x64-setup.exe（約 2.40 MB）', 'KuroCat.v5.1.0.zip（公式には存在しない）'],
+        ['容量と中身', '2.40 MB の正規 Rust インストーラー', '64.25 MB（不明な 35.92 MB exe ＋ 正確に 48 MiB の resources.pak ＋ 2 MiB の versions.dat）'],
         ['危険 ZIP の SHA-256', '/ja/download/ に全公式ハッシュ掲載', '19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d'],
       ],
       remedyTitle: '🛡️ すでに kurocat.net から実行してしまった場合の対処',
@@ -1381,8 +1381,8 @@ function buildSecurityPage(locale, today) {
       cols: ['항목', '공식 KuroCat (kurocat.org / GitHub)', '사칭 사이트 (kurocat.net)'],
       rows: [
         ['공식 여부', '✅ 유일한 공식 사이트 및 원작자 저장소', '❌ 제작자와 무관한 사칭 사이트'],
-        ['Windows 10/11 파일', 'KuroCat-5.1.2-x64-setup.exe (2.23 MB)', 'KuroCat.v5.1.0.zip (공식 배포 이력 없음)'],
-        ['용량 및 내부 구조', '네이티브 Rust 설치 파일 (2.23 MB)', '64.25 MB (출처 불명 35.92 MB exe + 정확히 48 MiB resources.pak + 2 MiB versions.dat)'],
+        ['Windows 10/11 파일', 'KuroCat-5.1.3-x64-setup.exe (2.40 MB)', 'KuroCat.v5.1.0.zip (공식 배포 이력 없음)'],
+        ['용량 및 내부 구조', '네이티브 Rust 설치 파일 (2.40 MB)', '64.25 MB (출처 불명 35.92 MB exe + 정확히 48 MiB resources.pak + 2 MiB versions.dat)'],
         ['의심 ZIP SHA-256', '/ko/download/에서 공식 해시 전체 공개', '19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d'],
       ],
       remedyTitle: '🛡️ 이미 kurocat.net 파일을 실행했다면?',

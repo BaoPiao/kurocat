@@ -37,7 +37,7 @@
 >
 > **KuroCat の唯一の公式サイトは [`https://kurocat.org/ja/`](https://kurocat.org/ja/)**、公式リポジトリは `github.com/qianyiai/kurocat` です。
 >
-> 作者と無関係ななりすましサイト **`kurocat.net`** が、非公式の **`64.25 MB` `KuroCat.v5.1.0.zip`**（SHA-256: `19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d`、不明な `35.92 MB KuroCat.exe`＋`50 MiB` の異常パディングファイル入り）を配布しています。公式 Windows 10/11 版は **`約 2.2 MB`** のインストーラーのみです。**`kurocat.net` から絶対にダウンロード・実行しないでください。** 詳細は [**公式セキュリティ警告**](https://kurocat.org/ja/security/) をご確認ください。
+> 作者と無関係ななりすましサイト **`kurocat.net`** が、非公式の **`64.25 MB` `KuroCat.v5.1.0.zip`**（SHA-256: `19ad10c48a7448584f1d00aa086f52b38231bacd659f04e83d3cefc60209796d`、不明な `35.92 MB KuroCat.exe`＋`50 MiB` の異常パディングファイル入り）を配布しています。公式 Windows 10/11 版は **`約 2.4 MB`** のインストーラーのみです。**`kurocat.net` から絶対にダウンロード・実行しないでください。** 詳細は [**公式セキュリティ警告**](https://kurocat.org/ja/security/) をご確認ください。
 
 <br />
 
@@ -76,18 +76,18 @@
 
 <a id="download"></a>
 
-## 📥 クイックダウンロード（`v5.1.2`）
+## 📥 クイックダウンロード（`v5.1.3`）
 
-> ✨ **v5.1.2 の新機能**：**AI コーディング相棒フック**（Claude Code / Codex / DeepSeek / Cursor 等）、**MCP 2D/3D 輪郭カスタム（10 ツール＋16 スポット）**、単一インスタンス多重起動防止を追加。詳細は [Releases](https://github.com/qianyiai/kurocat/releases) をご覧ください。
+> ✨ **v5.1.3 の新機能**：全プラットフォーム対応 **20%–100% 不透明度調整**、**KuroCat Live クロマキー専用配信窓**、**2D/3D/MCP 22 項目フル顔造形**、**実録猫ゴロゴロ音＆打鍵サウンド**、**端からチラ見（Edge-Peek）＆新待機アクション**、**Android v5.1.3 機能同期** を追加し、管理者再起動・ドラッグ・金融パスワード保護・リモートデスクトップ退避・macOS 入力監視・視聴者視点マウス向きを修正（#98 #80 #87 #40 #63 #92）。詳細は [Releases](https://github.com/qianyiai/kurocat/releases) をご覧ください。
 
 | プラットフォーム | 推奨パッケージ | サイズ | ダウンロード |
 | --- | --- | :---: | --- |
-| **🪟 Windows 10 / 11** | x64 インストーラー（65% / 108 キー切替内蔵） | 2.15 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-5.1.2-x64-setup.exe) · [**高速 CDN**](https://kurocat.org/ja/#download) |
-| **🍎 macOS 10.15+** | Apple Silicon (M1–M4) &amp; Intel ユニバーサル DMG | 5.93 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-macos-universal.dmg) · [**高速 CDN**](https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-macos-universal.dmg) |
-| **🐧 Linux (x86_64)** | Ubuntu 22.04+ / Debian 12+ | 2.38 MB | [**`.deb`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-linux-amd64.deb) · [**`.AppImage`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-linux-amd64.AppImage) · [**高速 CDN**](https://kurocat.org/ja/#linux-download) |
-| **🐧 Linux (ARM64)** | ARM64 / Raspberry Pi | 2.34 MB | [**`.deb`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-linux-arm64.deb) · [**`.AppImage`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-linux-arm64.AppImage) · [**高速 CDN**](https://kurocat.org/ja/#linux-download) |
-| **🖥️ Windows 7 SP1** | x64 ポータブル（オフライン WebView2 109 同梱） | 178.94 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-win7-x64-portable.zip) · [**高速 CDN**](https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-win7-x64-portable.zip) |
-| **🤖 Android** | Android APK | 5.05 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.2/KuroCat-v5.1.2-android.apk) · [**高速 CDN**](https://kurocat.org/releases/v5.1.2/KuroCat-v5.1.2-android.apk) |
+| **🪟 Windows 10 / 11** | x64 インストーラー（65% / 108 キー切替内蔵） | 2.40 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-5.1.3-x64-setup.exe) · [**高速 CDN**](https://kurocat.org/ja/#download) |
+| **🍎 macOS 10.15+** | Apple Silicon (M1–M4) &amp; Intel ユニバーサル DMG | 6.57 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-macos-universal.dmg) · [**高速 CDN**](https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-macos-universal.dmg) |
+| **🐧 Linux (x86_64)** | Ubuntu 22.04+ / Debian 12+ | 2.66 MB | [**`.deb`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-linux-amd64.deb) · [**`.AppImage`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-linux-amd64.AppImage) · [**高速 CDN**](https://kurocat.org/ja/#linux-download) |
+| **🐧 Linux (ARM64)** | ARM64 / Raspberry Pi | 2.62 MB | [**`.deb`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-linux-arm64.deb) · [**`.AppImage`**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-linux-arm64.AppImage) · [**高速 CDN**](https://kurocat.org/ja/#linux-download) |
+| **🖥️ Windows 7 SP1** | x64 ポータブル（オフライン WebView2 109 同梱） | 179.3 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-win7-x64-portable.zip) · [**高速 CDN**](https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x64-portable.zip) |
+| **🤖 Android** | Android APK | 5.17 MB | [**GitHub**](https://github.com/qianyiai/kurocat/releases/download/v5.1.3/KuroCat-v5.1.3-android.apk) · [**高速 CDN**](https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-android.apk) |
 
 **🍺 macOS Homebrew ワンライン導入**（推奨・隔離属性を自動解除するため手動 `xattr` 不要）：
 

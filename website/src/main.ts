@@ -12,15 +12,16 @@ import {
   KUROCAT_I18N,
   applyStaticI18n,
   detectInitialLocale,
+  normalizeLocale,
   persistLocale,
   type Locale,
 } from './i18n';
 import { keyboardEventToVk } from './webKeyMap';
 import type { CollarColorId, KuroCatEngine3D } from '../../src/catEngine3d';
 
-const LOCAL_MIRROR_VERSION = 'v5.1.2';
-const LOCAL_MIRROR_VER_NUM = '5.1.2';
-const MACOS_MIRROR_VERSION = 'v5.1.2';
+const LOCAL_MIRROR_VERSION = 'v5.1.3';
+const LOCAL_MIRROR_VER_NUM = '5.1.3';
+const MACOS_MIRROR_VERSION = 'v5.1.3';
 
 let currentLocale: Locale = detectInitialLocale();
 let i18n = KUROCAT_I18N[currentLocale];
@@ -44,6 +45,22 @@ const WHALE_DEMO_MEDIA: Record<Locale, { video: string; poster: string }> = {
   ko: {
     video: '/media/whale-douyin-14s-ko.mp4',
     poster: '/assets/whale-douyin-poster-ko.webp',
+  },
+  es: {
+    video: '/media/whale-douyin-14s-es.mp4',
+    poster: '/assets/whale-douyin-poster-es.webp',
+  },
+  pt: {
+    video: '/media/whale-douyin-14s-pt.mp4',
+    poster: '/assets/whale-douyin-poster-pt.webp',
+  },
+  ru: {
+    video: '/media/whale-douyin-14s-ru.mp4',
+    poster: '/assets/whale-douyin-poster-ru.webp',
+  },
+  de: {
+    video: '/media/whale-douyin-14s-de.mp4',
+    poster: '/assets/whale-douyin-poster-de.webp',
   },
 };
 
@@ -90,8 +107,8 @@ function buildDefaultAssets(): ReleaseAssetMap {
   const n65 = `KuroCat-${LOCAL_MIRROR_VER_NUM}-x64-setup.exe`;
   const nMac = `KuroCat-${MACOS_MIRROR_VERSION}-macos-universal.dmg`;
   return {
-    win65: { name: n65, primaryUrl: `${localBase}/${n65}`, ghUrl: `${ghBase}/${n65}`, sizeText: '2.15 MB' },
-    macos: { name: nMac, primaryUrl: `${macLocalBase}/${nMac}`, ghUrl: `${macGhBase}/${nMac}`, sizeText: '5.96 MB' },
+    win65: { name: n65, primaryUrl: `${localBase}/${n65}`, ghUrl: `${ghBase}/${n65}`, sizeText: '2.40 MB' },
+    macos: { name: nMac, primaryUrl: `${macLocalBase}/${nMac}`, ghUrl: `${macGhBase}/${nMac}`, sizeText: '6.57 MB' },
   };
 }
 
@@ -1201,13 +1218,45 @@ function initPolish(): void {
 }
 
 function initLanguageSwitcher(): void {
+  const dropdown = document.getElementById('lang-dropdown');
+  const trigger = document.getElementById('lang-trigger');
+
+  const setOpen = (open: boolean) => {
+    if (!dropdown || !trigger) return;
+    dropdown.classList.toggle('open', open);
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open && dropdown.contains(document.activeElement)) {
+      (document.activeElement as HTMLElement | null)?.blur();
+    }
+  };
+
+  if (trigger && dropdown) {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setOpen(!dropdown.classList.contains('open'));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+        setOpen(false);
+      }
+    });
+  }
+
   document.querySelectorAll<HTMLElement>('[data-lang]').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       e.preventDefault();
-      const lang = btn.dataset.lang;
-      if (lang === 'zh' || lang === 'en' || lang === 'ja' || lang === 'ko') {
+      const lang = normalizeLocale(btn.dataset.lang);
+      if (lang) {
         setLocale(lang, true);
+        setOpen(false);
       }
     });
   });
