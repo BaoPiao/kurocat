@@ -135,6 +135,7 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'nav.playground': '在线试玩',
       'nav.whale': '鲸鱼娘视频',
       'nav.download': '立即下载',
+      'nav.quark': '☁️ 夸克网盘',
       'nav.features': '核心特性',
       'nav.mcp': 'AI 捏猫',
       'hero.eyebrow': 'Windows · macOS · Linux · Android · Open Source',
@@ -190,7 +191,16 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'dl.winSub': 'Windows 10 / 11 (x64)',
       'dl.winTag': '推荐',
       'dl.primaryBtn': '高速直链下载',
+      'dl.quarkBtn': '☁️ 夸克网盘 ›',
       'dl.ghBtn': 'GitHub 官方源 ›',
+      'quark.badge': '☁️ 夸克网盘 · 官方合集',
+      'quark.platforms': 'Win / Mac / 安卓全包',
+      'quark.openBtn': '立即打开 ↗',
+      'quark.copyBtn': '复制口令',
+      'quark.dlBadge': '☁️ 官方夸克网盘高速分流',
+      'quark.dlPlatforms': '内含 Windows · macOS · Android 安装包',
+      'quark.dlTitle': '「KuroCat 谦一_官方」全平台合集文件夹',
+      'quark.dlOpenBtn': '☁️ 打开夸克网盘获取 ↗',
       'dl.macName': 'macOS 通用版（M 芯片 & Intel）',
       'dl.macSub': 'macOS 10.15+ (Catalina 及以上) Universal DMG',
       'dl.recommendedTag': '为你的设备推荐',
@@ -280,6 +290,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
         '免费开源的透明置顶桌面键鼠伴侣，支持 <strong>3D 手办 / 2D 经典</strong> 一键切换，超低占用不卡游戏。内置 <strong>6 款猫咪 + 大肥鱼</strong>，支持摸头呼噜、输密码自动闭眼、OBS 直播与 <strong>AI 捏猫</strong>。',
       'dl.sub':
         '所有安装包均内置 <strong>20%–150% 无级缩放</strong>、<strong>65% / 108 键随时切换</strong>、<strong>自定义尾巴拍键</strong> 与 <strong>App 内自动更新</strong>。<br />默认提供 <code>kurocat.org</code> 官方高速直链，同时保留 GitHub Releases 官方原链与 SHA-256 校验。',
+      'quark.heroDesc':
+        '<strong>「KuroCat 谦一_官方」</strong>高速直取 · 点开获取即免费支持开源维护',
+      'quark.dlBody':
+        '官方同步更新 Win / Mac / 安卓安装包，国内直连不限速且支持一键转存防丢；点击打开获取也是对 KuroCat 开源维护的免费支持。打开「夸克网盘 APP」也可复制口令 <code>/~f3813cZv6O~:/</code> 直达。',
       'dl.winDesc':
         '开箱即 65% 紧凑机械键盘，自动创建桌面 <code>KuroCat</code> 图标、开始菜单与系统卸载入口；右键随时可一键切换 <strong>108 键全尺寸小键盘</strong>、<strong>自定义尾巴按键</strong> 与内置自更新。',
       'dl.macDesc':
@@ -447,6 +461,7 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'nav.playground': 'Playground',
       'nav.whale': 'BigFish Video',
       'nav.download': 'Download',
+      'nav.quark': '☁️ Quark Drive',
       'nav.features': 'Features',
       'nav.mcp': 'AI MCP',
       'hero.eyebrow': 'Windows · macOS · Linux · Android · Open Source',
@@ -502,7 +517,16 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'dl.winSub': 'Windows 10 / 11 (x64)',
       'dl.winTag': 'Recommended',
       'dl.primaryBtn': 'Fast Direct Download',
+      'dl.quarkBtn': '☁️ Quark Drive ›',
       'dl.ghBtn': 'GitHub Official Mirror ›',
+      'quark.badge': '☁️ Official Quark Drive',
+      'quark.platforms': 'Win / Mac / Android Pack',
+      'quark.openBtn': 'Open Drive ↗',
+      'quark.copyBtn': 'Copy Code',
+      'quark.dlBadge': '☁️ Official Quark Cloud Mirror',
+      'quark.dlPlatforms': 'Includes Windows · macOS · Android',
+      'quark.dlTitle': '"KuroCat 谦一_官方" Official All-in-One Folder',
+      'quark.dlOpenBtn': '☁️ Open Quark Drive ↗',
       'dl.macName': 'macOS Universal (Apple Silicon & Intel)',
       'dl.macSub': 'macOS 10.15+ (Catalina or later) Universal DMG',
       'dl.recommendedTag': 'Recommended for You',
@@ -592,6 +616,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
         'A free, open-source transparent desktop typing companion with instant <strong>3D / 2D</strong> switching and ultra-low GPU overhead. Includes <strong>6 cats + BigFish</strong>, head-pat purring, password privacy guard, OBS overlay, and <strong>AI cat studio</strong>.',
       'dl.sub':
         'Every build includes <strong>20%–150% smooth scaling</strong>, <strong>65% / 108-key switching</strong>, <strong>customizable tail keys</strong>, and <strong>in-app auto-updates</strong>.<br />Fast official CDN mirrors on <code>kurocat.org</code> alongside official GitHub Releases with SHA-256 verification.',
+      'quark.heroDesc':
+        '<strong>"KuroCat 谦一_官方"</strong> China fast cloud pack · Opening supports free open-source development',
+      'quark.dlBody':
+        'Official folder synced with Windows, macOS &amp; Android builds — fast direct access in China, and opening via Quark Drive also supports free open-source maintenance. In Quark Drive App, copy code <code>/~f3813cZv6O~:/</code>.',
       'dl.winDesc':
         'Starts with the 65% compact layout and adds Desktop, Start Menu & Uninstaller shortcuts. Right-click anytime for <strong>108-key full-size</strong>, <strong>custom tail keys</strong>, OBS source & one-click updates.',
       'dl.macDesc':
@@ -759,6 +787,7 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'nav.playground': '体験版',
       'nav.whale': 'クジラ娘動画',
       'nav.download': 'ダウンロード',
+      'nav.quark': '☁️ Quark クラウド',
       'nav.features': '主な機能',
       'nav.mcp': 'AI カスタム',
       'hero.eyebrow': 'Windows · macOS · Linux · Android · Open Source',
@@ -814,7 +843,16 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'dl.winSub': 'Windows 10 / 11 (x64)',
       'dl.winTag': 'おすすめ',
       'dl.primaryBtn': '高速ダイレクトDL',
+      'dl.quarkBtn': '☁️ Quark クラウド ›',
       'dl.ghBtn': 'GitHub 公式ミラー ›',
+      'quark.badge': '☁️ 公式 Quark クラウド',
+      'quark.platforms': 'Win / Mac / Android 一括',
+      'quark.openBtn': '開く ↗',
+      'quark.copyBtn': 'コードコピー',
+      'quark.dlBadge': '☁️ 公式 Quark クラウド高速ミラー',
+      'quark.dlPlatforms': 'Windows · macOS · Android 同梱',
+      'quark.dlTitle': '「KuroCat 谦一_官方」公式パッケージフォルダ',
+      'quark.dlOpenBtn': '☁️ Quark クラウドで開く ↗',
       'dl.macName': 'macOS ユニバーサル版（M チップ & Intel）',
       'dl.macSub': 'macOS 10.15+ (Catalina 以降) Universal DMG',
       'dl.recommendedTag': 'この端末におすすめ',
@@ -904,6 +942,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
         '無料・オープンソースの透過デスクトップ相棒。<strong>3D / 2D</strong> をワンクリックで切替でき、ゲーム中も超低負荷で動作します。<strong>猫 6 種 + クジラ娘</strong>、なでなでゴロゴロ、パスワード自動保護、OBS 透過配信、<strong>AI カスタム猫</strong> に対応。',
       'dl.sub':
         '全パッケージに <strong>20%–150% 無段階ズーム</strong>・<strong>65% / 108 キー切替</strong>・<strong>しっぽキー選択</strong>・<strong>アプリ内自動更新</strong> を内蔵。<br /><code>kurocat.org</code> 公式高速ミラーと GitHub Releases 公式リンク（SHA-256 検証対応）を用意しています。',
+      'quark.heroDesc':
+        '<strong>「KuroCat 谦一_官方」</strong>公式クラウドフォルダ · 開くだけで無料開発の応援になります',
+      'quark.dlBody':
+        'Windows・macOS・Android 最新パッケージを公式同期中。リンクを開くだけで無料オープンソース開発の応援になります。Quark アプリではコード <code>/~f3813cZv6O~:/</code> をコピーして開けます。',
       'dl.winDesc':
         '初期配列は 65% コンパクト。デスクトップアイコンやアンインストーラーを自動作成し、右クリックから <strong>108 フルサイズ</strong>・<strong>しっぽキー指定</strong>・OBS 透過ソース・自動更新へいつでも切替できます。',
       'dl.macDesc':
@@ -1071,6 +1113,7 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'nav.playground': '체험판',
       'nav.whale': '고래소녀 영상',
       'nav.download': '다운로드',
+      'nav.quark': '☁️ Quark 클라우드',
       'nav.features': '핵심 기능',
       'nav.mcp': 'AI 커스텀',
       'hero.eyebrow': 'Windows · macOS · Linux · Android · Open Source',
@@ -1126,7 +1169,16 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'dl.winSub': 'Windows 10 / 11 (x64)',
       'dl.winTag': '추천',
       'dl.primaryBtn': '고속 직접 다운로드',
+      'dl.quarkBtn': '☁️ Quark 클라우드 ›',
       'dl.ghBtn': 'GitHub 공식 미러 ›',
+      'quark.badge': '☁️ 공식 Quark 클라우드',
+      'quark.platforms': 'Win / Mac / Android 통합',
+      'quark.openBtn': '바로 열기 ↗',
+      'quark.copyBtn': '코드 복사',
+      'quark.dlBadge': '☁️ 공식 Quark 클라우드 고속 미러',
+      'quark.dlPlatforms': 'Windows · macOS · Android 포함',
+      'quark.dlTitle': '「KuroCat 谦一_官方」공식 통합 폴더',
+      'quark.dlOpenBtn': '☁️ Quark 클라우드 열기 ↗',
       'dl.macName': 'macOS 유니버설 (Apple Silicon & Intel)',
       'dl.macSub': 'macOS 10.15+ (Catalina 이상) Universal DMG',
       'dl.recommendedTag': '내 기기 추천',
@@ -1216,6 +1268,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
         '무료 오픈소스 투명 바탕화면 키보드·마우스 펫. <strong>3D 피규어 / 2D 클래식</strong> 원클릭 전환과 초저사양 GPU 최적화로 게임 중에도 가볍게 동작합니다. <strong>고양이 6종 + 고래소녀</strong>, 쓰다듬기 골골송, 비밀번호 눈 가리기, OBS 투명 방송, <strong>AI 펫 커스텀</strong>을 지원합니다.',
       'dl.sub':
         '모든 패키지에 <strong>20%–150% 자유 크기 조절</strong>, <strong>65% / 108키 즉시 전환</strong>, <strong>커스텀 꼬리 타건</strong>, <strong>앱 내 자동 업데이트</strong>가 기본 포함됩니다.<br /><code>kurocat.org</code> 공식 고속 CDN 미러와 SHA-256 검증을 지원하는 GitHub Releases 공식 링크를 함께 제공합니다.',
+      'quark.heroDesc':
+        '<strong>「KuroCat 谦一_官方」</strong>공식 클라우드 폴더 · 열어 주시면 무료 오픈소스 유지에 힘이 됩니다',
+      'quark.dlBody':
+        'Windows, macOS, Android 최신 설치 파일이 공식 동기화되어 있습니다. Quark 클라우드로 열면 무료 오픈소스 유지보수에도 도움이 됩니다. 앱에서는 코드 <code>/~f3813cZv6O~:/</code>를 복사해 바로 열 수 있습니다.',
       'dl.winDesc':
         '기본 65% 콤팩트 배열로 시작하며 바탕화면·시작 메뉴·제거 항목을 자동 생성합니다. 우클릭 메뉴에서 <strong>108 풀배열</strong>, <strong>커스텀 꼬리 키</strong>, OBS 투명 소스, 원클릭 업데이트를 언제든 사용할 수 있습니다.',
       'dl.macDesc':
@@ -1383,6 +1439,7 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'nav.playground': 'Probar',
       'nav.whale': 'Video BigFish',
       'nav.download': 'Descargar',
+      'nav.quark': '☁️ Quark Drive',
       'nav.features': 'Funciones',
       'nav.mcp': 'IA MCP',
       'hero.eyebrow': 'Windows · macOS · Linux · Android · Código Abierto',
@@ -1438,7 +1495,16 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'dl.winSub': 'Windows 10 / 11 (x64)',
       'dl.winTag': 'Recomendado',
       'dl.primaryBtn': 'Descarga directa rápida',
+      'dl.quarkBtn': '☁️ Quark Drive ›',
       'dl.ghBtn': 'Espejo oficial de GitHub ›',
+      'quark.badge': '☁️ Quark Drive Oficial',
+      'quark.platforms': 'Win / Mac / Android',
+      'quark.openBtn': 'Abrir ↗',
+      'quark.copyBtn': 'Copiar código',
+      'quark.dlBadge': '☁️ Espejo oficial en la nube Quark Drive',
+      'quark.dlPlatforms': 'Incluye Windows · macOS · Android',
+      'quark.dlTitle': 'Carpeta oficial «KuroCat 谦一_官方»',
+      'quark.dlOpenBtn': '☁️ Abrir Quark Drive ↗',
       'dl.macName': 'macOS Universal (Apple Silicon e Intel)',
       'dl.macSub': 'macOS 10.15+ (Catalina o superior) Universal DMG',
       'dl.recommendedTag': 'Recomendado para ti',
@@ -1528,6 +1594,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
         'Compañero de teclado y ratón transparente, gratuito y de código abierto con cambio instantáneo <strong>3D / 2D</strong> y consumo mínimo de GPU. Incluye <strong>6 gatos + BigFish</strong>, ronroneo al acariciarlo, escudo de contraseñas, overlay para OBS y <strong>estudio IA de gatos</strong>.',
       'dl.sub':
         'Cada compilación incluye <strong>escala fluida 20%–150%</strong>, <strong>cambio 65% / 108 teclas</strong>, <strong>teclas de cola personalizables</strong> y <strong>actualización automática integrada</strong>.<br />Espejos CDN oficiales y rápidos en <code>kurocat.org</code> junto con GitHub Releases oficiales y verificación SHA-256.',
+      'quark.heroDesc':
+        '<strong>«KuroCat 谦一_官方»</strong> paquete en la nube · Abrir apoya gratis el proyecto open source',
+      'quark.dlBody':
+        'Carpeta oficial sincronizada con instaladores de Windows, macOS y Android; abrir desde Quark Drive también apoya gratuitamente el mantenimiento open source. En la app Quark usa el código <code>/~f3813cZv6O~:/</code>.',
       'dl.winDesc':
         'Inicia con teclado compacto 65% y crea accesos directos en Escritorio, Menú Inicio y desinstalador. Haz clic derecho cuando quieras para <strong>108 teclas completo</strong>, <strong>teclas de cola personalizadas</strong>, fuente OBS y actualización en un clic.',
       'dl.macDesc':
@@ -1695,6 +1765,7 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'nav.playground': 'Testar',
       'nav.whale': 'Vídeo BigFish',
       'nav.download': 'Baixar',
+      'nav.quark': '☁️ Quark Drive',
       'nav.features': 'Recursos',
       'nav.mcp': 'IA MCP',
       'hero.eyebrow': 'Windows · macOS · Linux · Android · Open Source',
@@ -1750,7 +1821,16 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'dl.winSub': 'Windows 10 / 11 (x64)',
       'dl.winTag': 'Recomendado',
       'dl.primaryBtn': 'Download direto rápido',
+      'dl.quarkBtn': '☁️ Quark Drive ›',
       'dl.ghBtn': 'Espelho oficial no GitHub ›',
+      'quark.badge': '☁️ Quark Drive Oficial',
+      'quark.platforms': 'Win / Mac / Android',
+      'quark.openBtn': 'Abrir ↗',
+      'quark.copyBtn': 'Copiar código',
+      'quark.dlBadge': '☁️ Espelho oficial na nuvem Quark Drive',
+      'quark.dlPlatforms': 'Inclui Windows · macOS · Android',
+      'quark.dlTitle': 'Pasta oficial «KuroCat 谦一_官方»',
+      'quark.dlOpenBtn': '☁️ Abrir Quark Drive ↗',
       'dl.macName': 'macOS Universal (Apple Silicon e Intel)',
       'dl.macSub': 'macOS 10.15+ (Catalina ou superior) Universal DMG',
       'dl.recommendedTag': 'Recomendado p/ você',
@@ -1840,6 +1920,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
         'Companheiro de teclado e mouse transparente, gratuito e open-source com troca instantânea <strong>3D / 2D</strong> e uso mínimo de GPU. Inclui <strong>6 gatos + BigFish</strong>, ronronado ao fazer carinho, proteção de senhas, overlay para OBS e <strong>estúdio IA de gatos</strong>.',
       'dl.sub':
         'Todas as versões incluem <strong>escala suave 20%–150%</strong>, <strong>troca 65% / 108 teclas</strong>, <strong>teclas de cauda personalizáveis</strong> e <strong>atualização automática no app</strong>.<br />Espelhos CDN oficiais rápidos em <code>kurocat.org</code> junto aos GitHub Releases oficiais com verificação SHA-256.',
+      'quark.heroDesc':
+        '<strong>«KuroCat 谦一_官方»</strong> pacote oficial na nuvem · Abrir apoia grátis o projeto open source',
+      'quark.dlBody':
+        'Pasta oficial sincronizada com instaladores de Windows, macOS e Android; abrir pelo Quark Drive também apoia gratuitamente a manutenção open source. No app Quark use o código <code>/~f3813cZv6O~:/</code>.',
       'dl.winDesc':
         'Começa com o layout compacto 65% e cria atalhos na Área de Trabalho, Menu Iniciar e desinstalador. Clique com o botão direito quando quiser para <strong>108 teclas completo</strong>, <strong>teclas de cauda</strong>, fonte OBS e atualização em um clique.',
       'dl.macDesc':
@@ -2007,6 +2091,7 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'nav.playground': 'Демо',
       'nav.whale': 'Видео BigFish',
       'nav.download': 'Скачать',
+      'nav.quark': '☁️ Quark Drive',
       'nav.features': 'Функции',
       'nav.mcp': 'ИИ MCP',
       'hero.eyebrow': 'Windows · macOS · Linux · Android · Open Source',
@@ -2062,7 +2147,16 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'dl.winSub': 'Windows 10 / 11 (x64)',
       'dl.winTag': 'Рекомендуем',
       'dl.primaryBtn': 'Быстрая прямая загрузка',
+      'dl.quarkBtn': '☁️ Quark Drive ›',
       'dl.ghBtn': 'Официальное зеркало GitHub ›',
+      'quark.badge': '☁️ Официальный Quark Drive',
+      'quark.platforms': 'Win / Mac / Android',
+      'quark.openBtn': 'Открыть ↗',
+      'quark.copyBtn': 'Копировать код',
+      'quark.dlBadge': '☁️ Официальное облачное зеркало Quark Drive',
+      'quark.dlPlatforms': 'Включает Windows · macOS · Android',
+      'quark.dlTitle': 'Официальная папка «KuroCat 谦一_官方»',
+      'quark.dlOpenBtn': '☁️ Открыть Quark Drive ↗',
       'dl.macName': 'macOS Universal (Apple Silicon и Intel)',
       'dl.macSub': 'macOS 10.15+ (Catalina и выше) Universal DMG',
       'dl.recommendedTag': 'Для вашего устройства',
@@ -2152,6 +2246,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
         'Бесплатный прозрачный десктоп-компаньон с открытым кодом, мгновенным переключением <strong>3D / 2D</strong> и минимальной нагрузкой на GPU. В комплекте <strong>6 котов + BigFish</strong>, мурчание при поглаживании, защита паролей, оверлей для OBS и <strong>ИИ-студия скинов</strong>.',
       'dl.sub':
         'Каждая сборка включает <strong>плавный масштаб 20%–150%</strong>, <strong>переключение 65% / 108 клавиш</strong>, <strong>настройку клавиш для хвоста</strong> и <strong>автообновление внутри приложения</strong>.<br />Быстрые официальные CDN-зеркала на <code>kurocat.org</code> вместе с официальными GitHub Releases и проверкой SHA-256.',
+      'quark.heroDesc':
+        '<strong>«KuroCat 谦一_官方»</strong> официальная папка · Переход бесплатно поддерживает проект',
+      'quark.dlBody':
+        'Официальная папка со сборками для Windows, macOS и Android — переход через Quark Drive также бесплатно поддерживает разработку KuroCat. В приложении Quark используйте код <code>/~f3813cZv6O~:/</code>.',
       'dl.winDesc':
         'По умолчанию запускается компактная 65%-клавиатура, создаются ярлыки на рабочем столе, в меню «Пуск» и деинсталлятор. По правому клику доступны <strong>полные 108 клавиш</strong>, <strong>свои клавиши хвоста</strong>, источник OBS и обновление в один клик.',
       'dl.macDesc':
@@ -2319,6 +2417,7 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'nav.playground': 'Live-Demo',
       'nav.whale': 'BigFish-Video',
       'nav.download': 'Download',
+      'nav.quark': '☁️ Quark Drive',
       'nav.features': 'Funktionen',
       'nav.mcp': 'KI MCP',
       'hero.eyebrow': 'Windows · macOS · Linux · Android · Open Source',
@@ -2374,7 +2473,16 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
       'dl.winSub': 'Windows 10 / 11 (x64)',
       'dl.winTag': 'Empfohlen',
       'dl.primaryBtn': 'Schneller Direktdownload',
+      'dl.quarkBtn': '☁️ Quark Drive ›',
       'dl.ghBtn': 'Offizieller GitHub-Mirror ›',
+      'quark.badge': '☁️ Offizielles Quark Drive',
+      'quark.platforms': 'Win / Mac / Android',
+      'quark.openBtn': 'Öffnen ↗',
+      'quark.copyBtn': 'Code kopieren',
+      'quark.dlBadge': '☁️ Offizieller Quark-Cloud-Mirror',
+      'quark.dlPlatforms': 'Enthält Windows · macOS · Android',
+      'quark.dlTitle': 'Offizieller Ordner „KuroCat 谦一_官方“',
+      'quark.dlOpenBtn': '☁️ Quark Drive öffnen ↗',
       'dl.macName': 'macOS Universal (Apple Silicon & Intel)',
       'dl.macSub': 'macOS 10.15+ (Catalina oder neuer) Universal DMG',
       'dl.recommendedTag': 'Für dein Gerät',
@@ -2464,6 +2572,10 @@ export const KUROCAT_I18N: Record<Locale, KuroCatI18nBundle> = {
         'Kostenloser, quelloffener Desktop-Tastatur- &amp; Maus-Begleiter mit transparentem Overlay, blitzschnellem <strong>3D / 2D</strong>-Wechsel und minimaler GPU-Last. Enthält <strong>6 Katzen + BigFish</strong>, Streichel-Schnurren, Passwort-Sichtschutz, OBS-Overlay und <strong>KI-Katzenstudio</strong>.',
       'dl.sub':
         'Jeder Build enthält <strong>stufenlose 20%–150%-Skalierung</strong>, <strong>65% / 108-Tasten-Wechsel</strong>, <strong>frei wählbare Schwanztasten</strong> und <strong>In-App-Auto-Updates</strong>.<br />Schnelle offizielle CDN-Mirrors auf <code>kurocat.org</code> neben offiziellen GitHub Releases mit SHA-256-Prüfsumme.',
+      'quark.heroDesc':
+        '<strong>„KuroCat 谦一_官方“</strong> offizieller Cloud-Ordner · Öffnen unterstützt kostenlos die Pflege',
+      'quark.dlBody':
+        'Offizieller Ordner mit Windows-, macOS- &amp; Android-Installern — das Öffnen über Quark Drive unterstützt kostenlos die Open-Source-Pflege. In der Quark-App einfach Code <code>/~f3813cZv6O~:/</code> nutzen.',
       'dl.winDesc':
         'Startet im kompakten 65%-Layout und erstellt Verknüpfungen für Desktop, Startmenü &amp; Deinstallation. Per Rechtsklick jederzeit umschaltbar auf <strong>108-Tasten-Vollformat</strong>, <strong>eigene Schwanztasten</strong>, OBS-Quelle &amp; 1-Klick-Update.',
       'dl.macDesc':

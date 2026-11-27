@@ -1302,6 +1302,37 @@ function initMcpCodeTabs(): void {
     });
   }
 
+  // Official Quark Pan share code copy
+  const QUARK_SHARE_SNIPPET =
+    '我用夸克网盘给你分享了「KuroCat 谦一_官方」，点击链接或复制整段内容，打开「夸克网盘APP」即可获取。\n/~f3813cZv6O~:/\n链接：https://pan.quark.cn/s/673684ea4103';
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-quark]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const done = () => {
+        btn.textContent = i18n.fmt.copied();
+        window.setTimeout(() => {
+          btn.textContent = i18n.text['quark.copyBtn'] || i18n.fmt.copyShort();
+        }, 1800);
+      };
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(QUARK_SHARE_SNIPPET).then(done).catch(() => {});
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = QUARK_SHARE_SNIPPET;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          done();
+        } catch {
+          // Ignore copy failure
+        }
+        document.body.removeChild(ta);
+      }
+    });
+  });
+
   // Prompt chips copy
   document.querySelectorAll('.prompt-chip').forEach((chip) => {
     chip.addEventListener('click', () => {
