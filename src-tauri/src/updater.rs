@@ -4,8 +4,8 @@ use std::sync::{Mutex, OnceLock};
 use tauri::{AppHandle, Emitter};
 
 const QIANYI_API_LATEST: &str = "https://qianyi.one/kurocat/releases/latest.json";
-const REPO_API_LATEST: &str = "https://api.github.com/repos/qianyiai/kurocat/releases/latest";
-const REPO_RELEASES_PAGE: &str = "https://github.com/qianyiai/kurocat/releases/latest";
+const REPO_API_LATEST: &str = "https://api.github.com/repos/qianyiai/KuroCat/releases/latest";
+const REPO_RELEASES_PAGE: &str = "https://github.com/qianyiai/KuroCat/releases/latest";
 
 pub const CURRENT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
@@ -90,7 +90,11 @@ fn extract_sha256(digest: &Option<String>) -> Option<String> {
 }
 
 fn detect_install_kind() -> &'static str {
-    #[cfg(all(windows, feature = "win7"))]
+    #[cfg(all(windows, feature = "win7", target_arch = "x86"))]
+    {
+        return "windows-win7-x86";
+    }
+    #[cfg(all(windows, feature = "win7", not(target_arch = "x86")))]
     {
         return "windows-win7";
     }
@@ -158,9 +162,21 @@ fn select_asset<'a>(assets: &'a [GhAsset], install_kind: &str) -> Option<&'a GhA
                     .iter()
                     .find(|a| a.name.to_ascii_lowercase().ends_with("-setup.exe"))
             }),
-        "windows-win7" => assets.iter().find(|a| {
+        "windows-win7" => assets
+            .iter()
+            .find(|a| {
+                let n = a.name.to_ascii_lowercase();
+                n.contains("win7") && n.contains("x64") && n.ends_with(".zip")
+            })
+            .or_else(|| {
+                assets.iter().find(|a| {
+                    let n = a.name.to_ascii_lowercase();
+                    n.contains("win7") && !n.contains("x86") && n.ends_with(".zip")
+                })
+            }),
+        "windows-win7-x86" => assets.iter().find(|a| {
             let n = a.name.to_ascii_lowercase();
-            n.contains("win7") && n.ends_with(".zip")
+            n.contains("win7") && n.contains("x86") && n.ends_with(".zip")
         }),
         "macos-app" => assets
             .iter()
@@ -827,6 +843,7 @@ fn spawn_detached_windows<S: AsRef<std::ffi::OsStr>>(
 #[cfg(windows)]
 fn install_windows_update(app: &AppHandle, info: &UpdateInfo) -> Result<(), String> {
     if info.install_kind == "windows-win7"
+        || info.install_kind == "windows-win7-x86"
         || info
             .asset_name
             .as_deref()
@@ -1068,7 +1085,7 @@ fn install_macos_update(app: &AppHandle, info: &UpdateInfo) -> Result<(), String
              /usr/bin/tccutil reset ListenEvent com.kurocat.pet >/dev/null 2>&1 || true; \
              sleep 0.2; \
            fi; \
-           /usr/bin/open -n '{dst}'; \
+           /usr/bin/open -n '{dst}' --args --wait-pid {pid}; \
          else \
            if [ -d '{dst}.bak' ]; then mv '{dst}.bak' '{dst}'; fi; \
            /usr/bin/open '{url}'; \
@@ -1212,6 +1229,32 @@ mod tests {
     }
 
     #[test]
+    fn select_asset_distinguishes_win7_x64_and_x86() {
+        let assets = vec![
+            GhAsset {
+                name: "KuroCat-v5.1.3-win7-x64-portable.zip".to_string(),
+                browser_download_url: "https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x64-portable.zip".to_string(),
+                size: Some(187971195),
+                digest: None,
+            },
+            GhAsset {
+                name: "KuroCat-v5.1.3-win7-x86-portable.zip".to_string(),
+                browser_download_url: "https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x86-portable.zip".to_string(),
+                size: Some(170000000),
+                digest: None,
+            },
+        ];
+        assert_eq!(
+            select_asset(&assets, "windows-win7").map(|a| a.name.as_str()),
+            Some("KuroCat-v5.1.3-win7-x64-portable.zip")
+        );
+        assert_eq!(
+            select_asset(&assets, "windows-win7-x86").map(|a| a.name.as_str()),
+            Some("KuroCat-v5.1.3-win7-x86-portable.zip")
+        );
+    }
+
+    #[test]
     fn pure_rust_sha256_matches_nist_vectors() {
         let h_empty = Sha256::new();
         assert_eq!(
@@ -1236,11 +1279,11 @@ mod tests {
     #[test]
     fn http_url_parser_handles_github_endpoints() {
         let (https, host, port, path) =
-            parse_http_url("https://api.github.com/repos/qianyiai/kurocat/releases/latest").unwrap();
+            parse_http_url("https://api.github.com/repos/qianyiai/KuroCat/releases/latest").unwrap();
         assert!(https);
         assert_eq!(host, "api.github.com");
         assert_eq!(port, 443);
-        assert_eq!(path, "/repos/qianyiai/kurocat/releases/latest");
+        assert_eq!(path, "/repos/qianyiai/KuroCat/releases/latest");
 
         let (https2, host2, port2, path2) =
             parse_http_url("http://127.0.0.1:8080/dl?v=1").unwrap();

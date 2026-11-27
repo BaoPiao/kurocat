@@ -2,7 +2,7 @@
 
 use crate::AppState;
 use std::cell::RefCell;
-use std::sync::atomic::{AtomicBool, AtomicIsize, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicIsize, AtomicU8, Ordering};
 use std::sync::{Mutex, OnceLock};
 use tauri::{AppHandle, Emitter, Manager};
 use windows_sys::Win32::Foundation::{HWND, LPARAM, LRESULT, POINT, RECT, SIZE, WPARAM};
@@ -15,8 +15,8 @@ use windows_sys::Win32::System::LibraryLoader::GetModuleHandleW;
 use windows_sys::Win32::UI::Input::KeyboardAndMouse::ReleaseCapture;
 use windows_sys::Win32::UI::WindowsAndMessaging::{
     CreateWindowExW, DefWindowProcW, DestroyWindow, DispatchMessageW, GetMessageW,
-    GetWindowLongPtrW, GetWindowRect, IsWindowVisible, LoadCursorW, PostMessageW, PostQuitMessage,
-    RegisterClassExW, SendMessageW, SetCursor, SetWindowLongPtrW, SetWindowPos, ShowWindow,
+    GetWindowRect, IsWindowVisible, LoadCursorW, PostMessageW, PostQuitMessage,
+    RegisterClassExW, SendMessageW, SetCursor, SetWindowPos, ShowWindow,
     TranslateMessage, UpdateLayeredWindow, GWL_EXSTYLE, HTCAPTION, HTCLIENT, HWND_NOTOPMOST,
     HWND_TOPMOST, IDC_ARROW, IDC_HAND, MA_NOACTIVATE, MSG, SWP_FRAMECHANGED, SWP_NOACTIVATE,
     SWP_NOMOVE, SWP_NOSIZE, SWP_NOZORDER, SW_HIDE, SW_SHOWNOACTIVATE, ULW_ALPHA, WM_APP, WM_CLOSE,
@@ -32,6 +32,7 @@ const WM_APP_SET_TOPMOST: u32 = WM_APP + 4;
 const WM_APP_SET_CLICK_THROUGH: u32 = WM_APP + 5;
 const WM_APP_REASSERT_TOPMOST: u32 = WM_APP + 6;
 const WM_APP_SHUTDOWN: u32 = WM_APP + 7;
+const WM_APP_SET_OPACITY: u32 = WM_APP + 8;
 
 struct PendingFrame {
     width: u32,
@@ -48,6 +49,7 @@ struct Win7LayeredHub {
     over_cat: AtomicBool,
     dragging: AtomicBool,
     overlay_active: AtomicBool,
+    opacity_alpha: AtomicU8,
     present_queued: AtomicBool,
     presented_frames: AtomicIsize,
     dumped_once: AtomicBool,
@@ -66,6 +68,7 @@ fn hub() -> &'static Win7LayeredHub {
         over_cat: AtomicBool::new(false),
         dragging: AtomicBool::new(false),
         overlay_active: AtomicBool::new(false),
+        opacity_alpha: AtomicU8::new(255),
         present_queued: AtomicBool::new(false),
         presented_frames: AtomicIsize::new(0),
         dumped_once: AtomicBool::new(false),
@@ -248,7 +251,7 @@ impl DibPresenter {
             let blend = BLENDFUNCTION {
                 BlendOp: AC_SRC_OVER as u8,
                 BlendFlags: 0,
-                SourceConstantAlpha: 255,
+                SourceConstantAlpha: hub().opacity_alpha.load(Ordering::Relaxed),
                 AlphaFormat: AC_SRC_ALPHA as u8,
             };
             // Passing pptDst = NULL keeps the current screen position untouched, so frames
@@ -408,14 +411,14 @@ unsafe extern "system" fn ulw_wnd_proc(
         WM_APP_SET_CLICK_THROUGH => {
             let ignore = wparam != 0;
             hub().click_through.store(ignore, Ordering::Relaxed);
-            let ex = GetWindowLongPtrW(hwnd, GWL_EXSTYLE);
+            let ex = crate::win_get_window_long_ptr_w(hwnd, GWL_EXSTYLE);
             let new_ex = if ignore {
                 ex | (WS_EX_LAYERED as isize) | (WS_EX_TRANSPARENT as isize)
             } else {
                 (ex | (WS_EX_LAYERED as isize)) & !(WS_EX_TRANSPARENT as isize)
             };
             if new_ex != ex {
-                SetWindowLongPtrW(hwnd, GWL_EXSTYLE, new_ex);
+                crate::win_set_window_long_ptr_w(hwnd, GWL_EXSTYLE, new_ex);
                 SetWindowPos(
                     hwnd,
                     std::ptr::null_mut(),
@@ -445,6 +448,12 @@ unsafe extern "system" fn ulw_wnd_proc(
         }
         WM_APP_SHUTDOWN => {
             let _ = DestroyWindow(hwnd);
+            0
+        }
+        WM_APP_SET_OPACITY => {
+            let alpha = (wparam as u8).clamp(51, 255);
+            hub().opacity_alpha.store(alpha, Ordering::Relaxed);
+            present_latest_on_thread(hwnd);
             0
         }
         WM_MOUSEACTIVATE => {
@@ -711,7 +720,7 @@ pub fn set_click_through(ignore: bool) {
 
 pub fn is_click_through() -> Option<bool> {
     let h = hwnd()?;
-    let ex = unsafe { GetWindowLongPtrW(h, GWL_EXSTYLE) };
+    let ex = unsafe { crate::win_get_window_long_ptr_w(h, GWL_EXSTYLE) };
     Some((ex & (WS_EX_TRANSPARENT as isize)) != 0)
 }
 
@@ -731,6 +740,17 @@ pub fn reassert_topmost() {
     if let Some(h) = hwnd() {
         unsafe {
             let _ = PostMessageW(h, WM_APP_REASSERT_TOPMOST, 0, 0);
+        }
+    }
+}
+
+pub fn set_opacity(opacity: f64) {
+    let clamped = crate::config::normalize_opacity(opacity);
+    let alpha = (clamped * 255.0).round().clamp(51.0, 255.0) as u8;
+    hub().opacity_alpha.store(alpha, Ordering::Relaxed);
+    if let Some(h) = hwnd() {
+        unsafe {
+            let _ = PostMessageW(h, WM_APP_SET_OPACITY, alpha as WPARAM, 0);
         }
     }
 }
