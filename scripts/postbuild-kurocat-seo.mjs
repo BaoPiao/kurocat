@@ -609,6 +609,7 @@ All official downloads, documentation, and source code are published exclusively
 
 - Windows 10 / 11 (x64 NSIS Installer, ~2.40 MB): \`https://kurocat.org/releases/v5.1.3/KuroCat-5.1.3-x64-setup.exe\`
 - Windows 7 SP1 (x64 Portable with offline WebView2 109): \`https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x64-portable.zip\`
+- Windows 7 SP1 (32-bit x86 Portable with offline WebView2 109): \`https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x86-portable.zip\`
 - macOS 10.15 Catalina+ (Apple Silicon M1–M4 & Intel Universal DMG): \`https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-macos-universal.dmg\` or \`brew install --cask qianyiai/tap/kurocat\`
 - Linux (Ubuntu 22.04+, Debian 12+, KylinOS V11+ — x86_64 & ARM64 \`.deb\` / \`.AppImage\`): \`https://kurocat.org/#linux-download\`
 - Android APK: \`https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-android.apk\`
@@ -664,6 +665,7 @@ Every topic hub is pre-rendered in Chinese (\`zh-CN\`), English (\`/en/\`), Japa
 
 - Windows 10/11 (x64 Installer): https://kurocat.org/releases/v5.1.3/KuroCat-5.1.3-x64-setup.exe
 - Windows 7 SP1 (x64 Portable w/ WebView2 109): https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x64-portable.zip
+- Windows 7 SP1 (32-bit x86 Portable w/ WebView2 109): https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-win7-x86-portable.zip
 - macOS 10.15+ Universal (Apple Silicon & Intel DMG): https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-macos-universal.dmg
 - macOS Homebrew Cask: \`brew install --cask qianyiai/tap/kurocat\`
 - Linux x86_64 \`.deb\`: https://kurocat.org/releases/v5.1.3/KuroCat-v5.1.3-linux-amd64.deb

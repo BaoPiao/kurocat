@@ -89,6 +89,32 @@ export const VERIFIED_ASSETS = [
     sha256: 'af9848ad0d108cd6e97f735f883e0eee7e8326fa298137de7e2d75832ca295f2',
   },
   {
+    key: 'win7-x86',
+    platform: {
+      zh: 'Windows 7 SP1 (32 位离线兼容包)',
+      en: 'Windows 7 SP1 (32-bit x86 Portable)',
+      ja: 'Windows 7 SP1 (32bit x86 ポータブル)',
+      ko: 'Windows 7 SP1 (32비트 x86 포터블)',
+      es: 'Windows 7 SP1 (32 bits x86 portátil)',
+      pt: 'Windows 7 SP1 (32 bits x86 portátil)',
+      ru: 'Windows 7 SP1 (32-bit x86 портативная)',
+      de: 'Windows 7 SP1 (32-Bit x86 Portabel)',
+    },
+    desc: {
+      zh: '内置 32 位离线 WebView2 109 内核 · 无 Aero 亦无白框',
+      en: 'Bundled 32-bit offline WebView2 109 · native per-pixel transparency',
+      ja: '32bit オフライン WebView2 109 同梱 · Aero 不要の透過描画',
+      ko: '32비트 오프라인 WebView2 109 내장 · Aero 없이도 완벽한 투명 렌더링',
+      es: 'Incluye WebView2 109 de 32 bits sin conexión · transparencia nativa sin Aero',
+      pt: 'Inclui WebView2 109 32 bits offline · transparência nativa sem precisar do Aero',
+      ru: 'Встроенный 32-битный офлайн WebView2 109 · нативная прозрачность без Aero',
+      de: 'Integriertes 32-Bit-Offline-WebView2 109 · native Pixel-Transparenz ohne Aero',
+    },
+    file: 'KuroCat-v5.1.3-win7-x86-portable.zip',
+    size: '159.4 MB',
+    sha256: '31fb5ef6638139eac9f99ac6107b810805fc945bc287bf1e712a303247a4c81e',
+  },
+  {
     key: 'linux-x64-deb',
     platform: {
       zh: 'Linux x86_64 (.deb)',
@@ -1042,7 +1068,7 @@ function buildDownloadPage(locale, today) {
       faqs: [
         { q: 'KuroCat 的唯一官方下载地址是什么？', a: '唯一官方网站为 https://kurocat.org/download/，官方 GitHub Releases 为 https://github.com/qianyiai/KuroCat/releases，macOS 官方源为 qianyiai/homebrew-tap。其他第三方同名域名（如 kurocat.net）均非官方维护。' },
         { q: '如何验证下载的安装包没有被第三方篡改？', a: '下载后计算文件 SHA-256（Windows 用 Get-FileHash，macOS/Linux 用 shasum -a 256），与本页及 GitHub Releases 公布的 64 位 SHA-256 摘要完全一致即可确认原版无篡改。' },
-        { q: 'Windows 7 或银河麒麟 / 统信 Linux 能用吗？', a: '可以。Windows 7 SP1 64 位请下载内置 WebView2 109 的 win7-x64-portable.zip；Ubuntu 22.04+ / Debian 12+ / 银河麒麟 V11+（glibc >= 2.34）支持 x86_64 与 ARM64 的 .deb 及 .AppImage。' },
+        { q: 'Windows 7 或银河麒麟 / 统信 Linux 能用吗？', a: '可以。Windows 7 SP1 同时提供 64 位（win7-x64-portable.zip）与 32 位（win7-x86-portable.zip）离线绿包，均内置 WebView2 109；Ubuntu 22.04+ / Debian 12+ / 银河麒麟 V11+（glibc >= 2.34）支持 x86_64 与 ARM64 的 .deb 及 .AppImage。' },
       ],
     },
     en: {
@@ -1379,7 +1405,8 @@ function buildDownloadPage(locale, today) {
             if (p === 'android') return 'android';
             if (p === 'ios' || p === 'iphone' || p === 'ipad') return 'ios';
             if (p === 'mac' || p === 'macos') return 'macos';
-            if (p === 'win7') return 'win7';
+            if (p === 'win7-x86' || p === 'win7-32' || p === 'win7x86') return 'win7-x86';
+            if (p === 'win7' || p === 'win7-x64') return 'win7';
             if (p === 'win' || p === 'windows') return 'win64';
             if (p === 'linux-arm64' || p === 'arm64') return 'linux-arm64-deb';
             if (p === 'linux' || p === 'linux-x64') return 'linux-x64-deb';
@@ -1389,7 +1416,7 @@ function buildDownloadPage(locale, today) {
           var all = ua + ' ' + plat;
           if (/Android/i.test(all)) return 'android';
           if (/iPhone|iPad|iPod/i.test(all) || (/MacIntel/i.test(navigator.platform || '') && navigator.maxTouchPoints > 1)) return 'ios';
-          if (/Windows NT 6\\.[123]/i.test(ua)) return 'win7';
+          if (/Windows NT 6\\.[123]/i.test(ua)) return /WOW64|Win64|x64|amd64/i.test(ua) ? 'win7' : 'win7-x86';
           if (/Win/i.test(plat) || /Windows/i.test(ua)) return 'win64';
           if (/Mac|Macintosh/i.test(all)) return 'macos';
           if (/Linux|X11/i.test(all)) return /aarch64|arm64|armv8/i.test(all) ? 'linux-arm64-deb' : 'linux-x64-deb';

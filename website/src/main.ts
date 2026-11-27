@@ -107,6 +107,7 @@ interface ReleaseAssetMap {
   macos: ReleaseAssetEntry;
   android: ReleaseAssetEntry;
   win7: ReleaseAssetEntry;
+  win7X86: ReleaseAssetEntry;
   linuxX64: ReleaseAssetEntry;
   linuxArm64: ReleaseAssetEntry;
 }
@@ -120,6 +121,7 @@ function buildDefaultAssets(): ReleaseAssetMap {
   const nMac = `KuroCat-${MACOS_MIRROR_VERSION}-macos-universal.dmg`;
   const nAndroid = `KuroCat-${LOCAL_MIRROR_VERSION}-android.apk`;
   const nWin7 = `KuroCat-${LOCAL_MIRROR_VERSION}-win7-x64-portable.zip`;
+  const nWin7X86 = `KuroCat-${LOCAL_MIRROR_VERSION}-win7-x86-portable.zip`;
   const nLinX64 = `KuroCat-${LOCAL_MIRROR_VERSION}-linux-amd64.deb`;
   const nLinArm = `KuroCat-${LOCAL_MIRROR_VERSION}-linux-arm64.deb`;
   return {
@@ -127,6 +129,7 @@ function buildDefaultAssets(): ReleaseAssetMap {
     macos: { name: nMac, primaryUrl: `${macLocalBase}/${nMac}`, ghUrl: `${macGhBase}/${nMac}`, sizeText: '6.57 MB' },
     android: { name: nAndroid, primaryUrl: `${localBase}/${nAndroid}`, ghUrl: `${ghBase}/${nAndroid}`, sizeText: '5.17 MB' },
     win7: { name: nWin7, primaryUrl: `${localBase}/${nWin7}`, ghUrl: `${ghBase}/${nWin7}`, sizeText: '179.3 MB' },
+    win7X86: { name: nWin7X86, primaryUrl: `${localBase}/${nWin7X86}`, ghUrl: `${ghBase}/${nWin7X86}`, sizeText: '159.4 MB' },
     linuxX64: { name: nLinX64, primaryUrl: `${localBase}/${nLinX64}`, ghUrl: `${ghBase}/${nLinX64}`, sizeText: '2.66 MB' },
     linuxArm64: { name: nLinArm, primaryUrl: `${localBase}/${nLinArm}`, ghUrl: `${ghBase}/${nLinArm}`, sizeText: '2.62 MB' },
   };
@@ -138,7 +141,8 @@ function detectVisitorOS(): VisitorOS {
     if (osParam === 'android') return 'android';
     if (osParam === 'ios' || osParam === 'iphone' || osParam === 'ipad') return 'ios';
     if (osParam === 'mac' || osParam === 'macos') return 'macos';
-    if (osParam === 'win7') return 'win7';
+    if (osParam === 'win7-x86' || osParam === 'win7-32' || osParam === 'win7x86') return 'win7-x86';
+    if (osParam === 'win7' || osParam === 'win7-x64') return 'win7';
     if (osParam === 'win' || osParam === 'windows') return 'win';
     if (osParam === 'linux-arm64' || osParam === 'arm64') return 'linux-arm64';
     if (osParam === 'linux' || osParam === 'linux-x64') return 'linux-x64';
@@ -157,7 +161,9 @@ function detectVisitorOS(): VisitorOS {
   if (/iPhone|iPad|iPod/i.test(combined) || (/MacIntel/i.test(navigator.platform || '') && navigator.maxTouchPoints > 1)) {
     return 'ios';
   }
-  if (/Windows NT 6\.[123]/i.test(ua)) return 'win7';
+  if (/Windows NT 6\.[123]/i.test(ua)) {
+    return /WOW64|Win64|x64|amd64/i.test(ua) ? 'win7' : 'win7-x86';
+  }
   if (/Win/i.test(plat) || /Windows/i.test(ua)) return 'win';
   if (/Mac|Macintosh/i.test(combined)) return 'macos';
   if (/Linux|X11/i.test(combined)) {
@@ -194,10 +200,14 @@ function applyReleaseUI(tag: string, assets: ReleaseAssetMap): void {
       heroBtn.href = assets.macos.primaryUrl;
       heroBtn.setAttribute('download', '');
       heroLabel.textContent = i18n.fmt.heroDownloadMac(assets.macos.sizeText);
+    } else if (os === 'win7-x86') {
+      heroBtn.href = assets.win7X86.primaryUrl;
+      heroBtn.setAttribute('download', '');
+      heroLabel.textContent = i18n.fmt.heroDownloadWin7(assets.win7X86.sizeText, 'x86');
     } else if (os === 'win7') {
       heroBtn.href = assets.win7.primaryUrl;
       heroBtn.setAttribute('download', '');
-      heroLabel.textContent = i18n.fmt.heroDownloadWin7(assets.win7.sizeText);
+      heroLabel.textContent = i18n.fmt.heroDownloadWin7(assets.win7.sizeText, 'x64');
     } else if (os === 'linux-arm64') {
       heroBtn.href = assets.linuxArm64.primaryUrl;
       heroBtn.setAttribute('download', '');
@@ -222,8 +232,10 @@ function applyReleaseUI(tag: string, assets: ReleaseAssetMap): void {
         ? assets.android.sizeText
         : os === 'macos'
           ? assets.macos.sizeText
-          : os === 'win7'
-            ? assets.win7.sizeText
+          : os === 'win7-x86'
+            ? assets.win7X86.sizeText
+            : os === 'win7'
+              ? assets.win7.sizeText
             : os === 'linux-arm64'
               ? assets.linuxArm64.sizeText
               : os === 'linux-x64'
@@ -262,7 +274,7 @@ function applyReleaseUI(tag: string, assets: ReleaseAssetMap): void {
 
   const win7Card = document.getElementById('win7-download');
   const linuxCard = document.getElementById('linux-download');
-  if (win7Card) win7Card.classList.toggle('os-recommended', os === 'win7');
+  if (win7Card) win7Card.classList.toggle('os-recommended', os === 'win7' || os === 'win7-x86');
   if (linuxCard) linuxCard.classList.toggle('os-recommended', os === 'linux-x64' || os === 'linux-arm64');
 
   (Object.keys(assets) as Array<keyof ReleaseAssetMap>).forEach((key) => {
@@ -410,6 +422,7 @@ async function syncGithubMetadata(): Promise<void> {
         const aMac = find((n) => n.endsWith('-macos-universal.dmg'));
         const aAndroid = find((n) => n.endsWith('-android.apk'));
         const aWin7 = find((n) => n.endsWith('-win7-x64-portable.zip'));
+        const aWin7X86 = find((n) => n.endsWith('-win7-x86-portable.zip'));
         const aLinX64 = find((n) => n.endsWith('-linux-amd64.deb'));
         const aLinArm = find((n) => n.endsWith('-linux-arm64.deb'));
 
@@ -421,6 +434,7 @@ async function syncGithubMetadata(): Promise<void> {
           macos: toEntry(aMac, defaults.macos),
           android: toEntry(aAndroid, defaults.android),
           win7: toEntry(aWin7, defaults.win7),
+          win7X86: toEntry(aWin7X86, defaults.win7X86),
           linuxX64: toEntry(aLinX64, defaults.linuxX64),
           linuxArm64: toEntry(aLinArm, defaults.linuxArm64),
         };
